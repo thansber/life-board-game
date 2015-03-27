@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-a11y-keys/core-a11y-keys.html">
+<link rel="import" href="../../elements/life-player/life-player.html">
+<link rel="import" href="../../elements/life-spaces/life-spaces.html">
+
+<polymer-element name="life-game" attributes="players started"
+  on-select-player="{{selectPlayer}}"
+  on-remove-player="{{removePlayer}}"
+  on-move-up="{{moveUp}}"
+  on-move-down="{{moveDown}}">
+  <template>
+    <link rel="stylesheet" href="life-game.css">
+    <div vertical layout id="players">
+      <template repeat="{{player, i in players}}">
+        <life-player
+          player="{{player}}"
+          index="{{i}}"
+          started="{{started}}"
+          notFirst="{{i > 0}}"
+          notLast="{{i != players.length - 1}}"></life-player>
+      </template>
+    </div>
+    <life-spaces player="{{currentPlayer}}"></life-spaces>
+    <core-a11y-keys keys="n" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
+  </template>
+  <script src="life-game.js"></script>
+</polymer-element>

@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+
+<polymer-element name="life-player" attributes="player index started notFirst notLast">
+  <template>
+    <link rel="stylesheet" href="life-player.css">
+    <div horizontal layout center player player-index="{{index}}" on-tap="{{playerAction}}">
+      <div verical layout center actions hidden?="{{started}}">
+        <template if="{{notFirst}}">
+          <core-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></core-icon-button>
+        </template>
+        <core-icon-button icon="highlight-remove" player-action="remove-player"></core-icon-button>
+        <template if="{{notLast}}">
+          <core-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></core-icon-button>
+        </template>
+      </div>
+      <div id="cash" hidden?="{{!started}}">${{player.formattedCash}}</div>
+      <div car color="{{player.color}}">
+        <core-icon icon="car-icons-large:{{player.car}}" player-car></core-icon>
+      </div>
+      <div name>{{player.name}}</div>
+    </div>
+  </template>
+  <script src="life-player.js"></script>
+</polymer-element>

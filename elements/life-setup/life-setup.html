@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+
+<polymer-element name="life-setup" attributes="players started">
+  <template>
+    <link rel="stylesheet" href="life-setup.css">
+    <section id="pregame" hiding?="{{started}}" layout horizontal center>
+      <div layout vertical>
+        <input type="text" value="{{name}}" placeholder="Enter player name" />
+        <core-selector layout horizontal id="swatches" valueattr="player-color" on-core-select="{{swatchChanged}}">
+          <template repeat="{{color in colorChoices}}">
+            <core-item swatch player-color="{{color}}"></core-item>
+          </template>
+        </core-selector>
+        <core-selector layout horizontal id="cars" valueattr="player-car">
+          <template repeat="{{car in carChoices}}">
+            <core-icon-button icon="car-icons:{{car}}" player-car="{{car}}"></core-icon-button>
+          </template>
+        </core-selector>
+      </div>
+      <button add-player grey on-tap="{{addPlayer}}">Add player</button>
+      <button start-game green on-tap="{{startGame}}">Start Game</button>
+    </section>
+    <section id="during" hiding?="{{!started}}" on-tap="{{pauseGame}}" horizontal center-justified layout>
+      <core-icon-button icon="hardware:keyboard-arrow-down" title="I need to make changes"></core-icon-button>
+    </section>
+  </template>
+  <script src="life-setup.js"></script>
+</polymer-element>

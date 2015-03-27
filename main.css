@@ -1,0 +1,203 @@
+body,h1,h2,h3,h4,h5,h6,p {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(34, 34, 34);
+  color: rgb(102, 102, 102);
+  font-family: Verdana;
+  overflow-x: hidden;
+}
+
+body.started life-setup {
+  height: 1.5em;
+  padding-bottom: 1em;
+}
+
+body.started /deep/ life-spaces {
+  display: inline-block;
+}
+
+html /deep/ [red] {
+  background: linear-gradient(rgb(223, 51, 54), rgb(191, 50, 53));
+}
+
+html /deep/ [red]:hover {
+  background: linear-gradient(rgb(191, 50, 53), rgb(223, 51, 54));
+}
+
+html /deep/ [orange] {
+  background: linear-gradient(rgb(255, 200, 100), rgb(255, 165, 0));
+}
+
+html /deep/ [orange]:hover {
+  background: linear-gradient(rgb(255, 165, 0), rgb(255, 200, 100));
+}
+
+html /deep/ [green] {
+  background: linear-gradient(rgb(93, 156, 70), rgb(61, 104, 50));
+}
+
+html /deep/ [green]:hover {
+  background: linear-gradient(rgb(61, 104, 50), rgb(93, 156, 70));
+}
+
+html /deep/ [blue] {
+  background: linear-gradient(rgb(0, 0, 255), rgb(0, 0, 127));
+}
+
+html /deep/ [blue]:hover {
+  background: linear-gradient(rgb(0, 0, 127), rgb(0, 0, 255));
+}
+
+html /deep/ [lightblue] {
+  background: linear-gradient(rgb(188, 210, 238), rgb(142, 184, 237));
+  color: rgb(51, 51, 51);
+  text-shadow: 2px 2px 3px rgb(232, 232, 232);
+}
+
+html /deep/ [lightblue]:hover {
+  background: linear-gradient(rgb(142, 184, 237), rgb(188, 210, 238));
+}
+
+html /deep/ [grey] {
+  background: linear-gradient(rgb(102, 102, 102), rgb(51, 51, 51));
+}
+
+html /deep/ [grey]:hover {
+  background: linear-gradient(rgb(51, 51, 51), rgb(102, 102, 102));
+}
+
+html /deep/ [pink] {
+  background: linear-gradient(rgb(250, 212, 219), rgb(255, 192, 203));
+  color: rgb(51, 51, 51);
+  text-shadow: 2px 2px 3px rgb(232, 232, 232);
+}
+
+html /deep/ [pink]:hover {
+  background: linear-gradient(rgb(255, 192, 203), rgb(250, 212, 219));
+}
+
+html /deep/ [gold] {
+  background: linear-gradient(rgb(255, 162, 0), rgb(255, 186, 64));
+  color: rgb(51, 51, 51);
+  text-shadow: 2px 2px 3px rgb(204, 204, 204);
+}
+
+html /deep/ [gold]:hover {
+  background: linear-gradient(rgb(255, 186, 64), rgb(255, 162, 0));
+}
+
+html /deep/ [player-color="red"] {
+  background-color: rgb(201, 0, 0);
+}
+
+html /deep/ [player-color="pink"] {
+  background-color: rgb(255, 192, 203);
+}
+
+html /deep/ [player-color="orange"] {
+  background-color: rgb(238, 136, 51);
+}
+
+html /deep/ [player-color="green"] {
+  background-color: rgb(0, 153, 0);
+}
+
+html /deep/ [player-color="blue"] {
+  background-color: rgb(26, 101, 160);
+}
+
+html /deep/ [player-color="cyan"] {
+  background-color: rgb(188, 210, 238);
+}
+
+html /deep/ [player-color="white"] {
+  background-color: rgb(255, 255, 255);
+}
+
+html /deep/ [color="red"] [player-car] {
+  color: rgb(201, 0, 0);
+}
+
+html /deep/ [color="pink"] [player-car] {
+  color: rgb(255, 192, 203);
+}
+
+html /deep/ [color="orange"] [player-car] {
+  color: rgb(238, 136, 51);
+}
+
+html /deep/ [color="green"] [player-car] {
+  color: rgb(0, 153, 0);
+}
+
+html /deep/ [color="blue"] [player-car] {
+  color: rgb(26, 101, 160);
+}
+
+html /deep/ [color="cyan"] [player-car] {
+  color: rgb(188, 210, 238);
+}
+
+html /deep/ [color="white"] [player-car] {
+  color: rgb(255, 255, 255);
+}
+
+html /deep/ button {
+  border-radius: 12px;
+  box-shadow: 2px 2px 1px rgb(102, 102, 102);
+  color: rgb(240, 240, 240);
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+  padding: 2px 8px 3px;
+  position: relative;
+  text-shadow: 2px 2px 3px rgb(17, 17, 17);
+}
+
+html /deep/ button[large] {
+  font-size: 1.33em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+html /deep/ button:active {
+  box-shadow: 1px 1px 1px rgb(102, 102, 102);
+  top: 1px;
+}
+
+html /deep/ button[red] {
+  border: 2px solid rgb(149, 43, 44);
+}
+
+html /deep/ button[orange] {
+  border: 2px solid rgb(238, 156, 51);
+}
+
+html /deep/ button[green] {
+  border: 2px solid rgb(34, 87, 38);
+}
+
+html /deep/ button[blue] {
+  border: 2px solid rgb(0, 0, 127);
+}
+
+html /deep/ button[grey] {
+  border: 2px solid rgb(26, 26, 26);
+}
+
+html /deep/ button[lightblue] {
+  border: 2px solid rgb(110, 169, 245);
+}
+
+html /deep/ button[pink] {
+  border: 2px solid rgb(217, 145, 158);
+}
+
+html /deep/ button[gold] {
+  border: 2px solid rgb(166, 106, 0);
+}

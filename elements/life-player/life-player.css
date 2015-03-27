@@ -1,0 +1,39 @@
+:host {
+  border-color: rgba(102, 102, 102, 0);
+  border-style: solid;
+  border-width: 2px 0;
+  margin-bottom: 1.5em;
+}
+
+:host([active]) {
+  border-color: rgba(102, 102, 102, 1);
+}
+
+:host [actions] {
+  height: 72px;
+}
+
+:host [actions] /deep/ core-icon-button {
+  display: block;
+  margin: 0;
+  padding: 0em 0.5em;
+}
+
+:host [actions] /deep/ core-icon {
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  width: 24px;
+}
+
+:host #cash {
+  font-size: 1.25em;
+  margin-right: 1em;
+  text-align: right;
+  width: 8em;
+}
+
+:host [car] /deep/ core-icon {
+  height: 72px;
+  width: 184px;
+}

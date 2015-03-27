@@ -1,0 +1,105 @@
+:host {
+  background-color: rgb(85, 85, 85);
+  color: rgb(227, 227, 227);
+  display: block;
+  overflow: hidden;
+  padding: 0 1em 6em 1em;
+}
+
+:host section {
+  position: relative;
+  top: 0;
+}
+
+:host section[hiding] {
+  top: -20em;
+}
+
+:host #pregame {
+  height: 10em;
+  padding-top: 1em;
+}
+
+:host input {
+  font-size: 1.4em;
+  margin-right: 1em;
+}
+
+:host #swatches {
+  margin-top: 1em;
+}
+
+:host [swatch] {
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 3em;
+  margin-bottom: 0;
+  margin-right: 1em;
+  opacity: 0.2;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  width: 3em;
+}
+
+:host [swatch]:hover {
+  box-shadow: 0 0 6px rgb(255, 255, 255);
+  opacity: 0.5;
+}
+
+:host [swatch][active] {
+  box-shadow: 0 0 12px rgb(255, 255, 255);
+  opacity: 1;
+}
+
+:host [swatch][disabled] {
+  background-color: rgb(104, 104, 104);
+  box-shadow: none;
+  cursor: default;
+  opacity: 0.2;
+}
+
+:host::shadow button {
+  font-size: 1.5em;
+  margin: 0 0 0 1em;
+  padding: 0.5em;
+}
+
+:host #cars {
+  margin-top: 1em;
+}
+
+:host [player-car] {
+  color: rgb(0, 0, 0);
+  height: 30px;
+  width: 74px;
+}
+
+:host [player-car].selected,
+:host [player-car]:hover {
+  background: none;
+  box-shadow: none;
+}
+
+:host [player-car] /deep/ core-icon {
+  width: 74px;
+  height: 74px;
+}
+
+:host [player-car][active] /deep/ svg {
+  -webkit-filter: drop-shadow(0 0 6px rgb(255, 255, 255));
+  filter: drop-shadow(0 0 6px rgb(255, 255, 255));
+}
+
+:host #during {
+  cursor: pointer;
+  margin-top: -6em;
+  width: 100%;
+}
+
+:host #during core-icon-button {
+  height: 24px;
+  margin: 0;
+  padding: 0;
+}

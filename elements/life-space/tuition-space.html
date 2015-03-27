@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="life-space.html">
+
+<polymer-element name="tuition-space" extends="life-space">
+  <template>
+    <button red executor>pay for tuition</button>
+    <button grey next>skip tuition</button>
+  </template>
+  <script>
+    Polymer({
+      execute: function() {
+        debugger;
+      },
+
+      next: function() {
+        // default no-op, extending tags should customize this
+      }
+    });
+  </script>
+</polymer-element
