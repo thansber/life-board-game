@@ -51,11 +51,11 @@ Polymer({
         nextIndex = 0;
       }
     }
-    this.selectPlayer(this.allPlayers().item(nextIndex));
+    this.selectPlayer({}, { index: nextIndex });
   },
 
   playerIndex: function(playerElem) {
-    return +playerElem.getAttribute('player-index');
+    return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
   },
 
   ready: function() {
@@ -67,11 +67,8 @@ Polymer({
   },
 
   selectPlayer: function(event, detail, sender) {
-    var index = detail.index,
-        prevPlayer = this.currentlySelectedPlayer();
-    if (prevPlayer) {
-      prevPlayer.removeAttribute('active');
-    }
+    var index = detail.index;
+    this.unselectPlayer(this.currentlySelectedPlayer());
     this.allPlayers().item(index).setAttribute('active', '');
     this.currentPlayer = this.players[index];
   },
@@ -80,6 +77,12 @@ Polymer({
     if (this.started) {
       this.focus();
       this.fire('select-player', { index: 0 });
+    }
+  },
+
+  unselectPlayer: function(playerElem) {
+    if (playerElem) {
+      playerElem.removeAttribute('active');
     }
   }
 

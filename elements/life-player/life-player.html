@@ -3,10 +3,10 @@
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 
-<polymer-element name="life-player" attributes="player index started notFirst notLast">
+<polymer-element name="life-player" attributes="player started notFirst notLast">
   <template>
     <link rel="stylesheet" href="life-player.css">
-    <div horizontal layout center player player-index="{{index}}" on-tap="{{playerAction}}">
+    <div horizontal layout center id="player" player-index="{{player.index}}" on-tap="{{playerAction}}">
       <div verical layout center actions hidden?="{{started}}">
         <template if="{{notFirst}}">
           <core-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></core-icon-button>
