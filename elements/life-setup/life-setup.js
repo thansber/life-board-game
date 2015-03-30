@@ -17,15 +17,16 @@ Polymer({
     this.started = false;
   },
 
-  createPlayer: function(name, color, car) {
+  createPlayer: function(name, color, car, space) {
     return {
-      name: name,
       color: color,
       car: car,
       cash: 10000,
+      index: this.players.length,
       insurance: [],
       job: null,
-      index: this.players.length
+      name: name,
+      space: space
     };
   },
 
@@ -44,7 +45,7 @@ Polymer({
   ready: function() {
     this.carChoices = ['car', 'classic-car', 'antique-car', 'suv', 'van', 'truck'];
     this.colorChoices = ['red', 'pink', 'orange', 'green', 'blue', 'cyan', 'white'];
-    this.players.push(this.createPlayer('Madelyn', 'red', 'car'));
+    this.players.push(this.createPlayer('Madelyn', 'red', 'car', 'jobs'));
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
