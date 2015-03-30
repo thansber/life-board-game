@@ -20,6 +20,11 @@ Polymer({
     this.fire('next-space');
   },
 
+  taxes: function(event, detail, sender) {
+    this.transaction(this.player.job.salary / -2);
+    this.next();
+  },
+
   transaction: function(amount) {
     this.player.cash += amount;
   },
