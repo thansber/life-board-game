@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../elements/life-space/auto-insurance-space.html">
 <link rel="import" href="../../elements/life-space/tuition-space.html">
+<link rel="import" href="../../elements/life-space/jobs-space.html">
 
 <polymer-element name="life-spaces" attributes="player" on-next-space="{{nextSpace}}">
   <template>
@@ -9,6 +10,7 @@
     <core-selector id="spaces" valueattr="id">
       <auto-insurance-space space id="auto-insurance" player="{{player}}"></auto-insurance-space>
       <tuition-space space id="tuition" player="{{player}}"></tuition-space>
+      <jobs-space space id="jobs" player="{{player}}"></jobs-space>
     </core-selector>
   </template>
   <script src="life-spaces.js"></script>
