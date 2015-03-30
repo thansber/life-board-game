@@ -1,0 +1,22 @@
+{
+  "name": "life-board-game",
+  "version": "0.0.0",
+  "authors": [
+    "thansber <thansber@yahoo.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "core-selector": "Polymer/core-selector#~0.5.5",
+    "core-item": "Polymer/core-item#~0.5.5",
+    "core-icon-button": "Polymer/core-icon-button#~0.5.5"
+  }
+}
