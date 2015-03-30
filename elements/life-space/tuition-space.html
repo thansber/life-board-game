@@ -3,18 +3,11 @@
 
 <polymer-element name="tuition-space" extends="life-space">
   <template>
-    <button red executor>pay for tuition</button>
-    <button grey next>skip tuition</button>
+    please pay for tuition
+    <button red executor on-tap="{{pay}}" amount="-2000">OK</button>
+    <button grey next on-tap="{{next}}">No thanks</button>
   </template>
   <script>
-    Polymer({
-      execute: function() {
-        debugger;
-      },
-
-      next: function() {
-        // default no-op, extending tags should customize this
-      }
-    });
+    Polymer();
   </script>
 </polymer-element

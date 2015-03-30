@@ -1,12 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../elements/life-space/auto-insurance-space.html">
 <link rel="import" href="../../elements/life-space/tuition-space.html">
 
-<polymer-element name="life-spaces" attributes="player">
+<polymer-element name="life-spaces" attributes="player" on-next-space="{{nextSpace}}">
   <template>
     <link rel="stylesheet" href="life-spaces.css">
-    <auto-insurance-space space id="auto-insurance" player="{{player}}"></auto-insurance-space>
-    <tuition-space space id="tuition" player="{{player}}"></tuition-space>
+    <core-selector id="spaces" valueattr="id">
+      <auto-insurance-space space id="auto-insurance" player="{{player}}"></auto-insurance-space>
+      <tuition-space space id="tuition" player="{{player}}"></tuition-space>
+    </core-selector>
   </template>
   <script src="life-spaces.js"></script>
 </polymer-element
