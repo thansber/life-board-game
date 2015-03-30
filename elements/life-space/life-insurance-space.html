@@ -1,0 +1,13 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="life-space.html">
+
+<polymer-element name="life-insurance-space" attributes="player" extends="life-space">
+  <template>
+    would you like to buy life insurance?
+    <button blue executor on-tap="{{addInsurance}}" insurance="life" amount="-10000">Yes, please</button>
+    <button grey next on-tap="{{next}}">No thanks</button>
+  </template>
+  <script>
+    Polymer();
+  </script>
+</polymer-element
