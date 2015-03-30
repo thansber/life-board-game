@@ -25,6 +25,8 @@ Polymer({
   moveDown: function(event, detail, sender) {
     var i = detail.index,
         playerMoving = this.players[i];
+    this.players[i].index++;
+    this.players[i + 1].index--;
     this.players[i] = this.players[i + 1];
     this.players[i + 1] = playerMoving;
   },
@@ -32,6 +34,8 @@ Polymer({
   moveUp: function(event, detail, sender) {
     var i = detail.index,
         playerMoving = this.players[i];
+    this.players[i].index--;
+    this.players[i - 1].index++;
     this.players[i] = this.players[i - 1];
     this.players[i - 1] = playerMoving;
   },
