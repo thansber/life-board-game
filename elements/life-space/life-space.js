@@ -5,6 +5,12 @@ Polymer({
     this.transfer.apply(this, arguments);
   },
 
+  // handled by game
+  everyonePays: function(event, detail, sender) {
+    this.fire('everyone-pays', { player: this.player, amount: +sender.getAttribute('amount') });
+    this.next();
+  },
+
   next: function(event, detail, sender) {
     this.fire('next-space');
   },

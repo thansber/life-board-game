@@ -45,7 +45,7 @@ Polymer({
   ready: function() {
     this.carChoices = ['car', 'classic-car', 'antique-car', 'suv', 'van', 'truck'];
     this.colorChoices = ['red', 'pink', 'orange', 'green', 'blue', 'cyan', 'white'];
-    this.players.push(this.createPlayer('Madelyn', 'red', 'car', 'jobs'));
+    this.players.push(this.createPlayer('Madelyn', 'red', 'car', 'marriage'));
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
     this.players.push(this.createPlayer('Will', 'green', 'suv'));

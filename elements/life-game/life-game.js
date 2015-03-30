@@ -13,6 +13,16 @@ Polymer({
     return this.$.players.querySelector('[player][active]');
   },
 
+  everyonePays: function(event, detail, sender) {
+    var otherPlayers = this.players.filter(function(player) {
+      return player.index !== detail.player.index;
+    });
+    otherPlayers.forEach(function(player) {
+      player.cash -= detail.amount;
+    });
+    detail.player.cash += (detail.amount * otherPlayers.length);
+  },
+
   keyHandler: function(ev) {
     switch (ev.detail.key) {
       case 'n':

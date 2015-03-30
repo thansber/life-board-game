@@ -1,0 +1,14 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="life-space.html">
+
+<polymer-element name="marriage-space" attributes="player" extends="life-space">
+  <template>
+    was married, for presents, spun a
+    <button green executor on-tap="{{everyonePays}}" amount="2000">1, 2, or 3</button>
+    <button green executor on-tap="{{everyonePays}}" amount="1000">4, 5, or 6</button>
+    <button grey executor on-tap="{{next}}" amount="0">7, 8, 9, or 10</button>
+  </template>
+  <script>
+    Polymer();
+  </script>
+</polymer-element

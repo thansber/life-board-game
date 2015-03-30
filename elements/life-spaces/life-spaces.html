@@ -4,6 +4,7 @@
 <link rel="import" href="../../elements/life-space/tuition-space.html">
 <link rel="import" href="../../elements/life-space/jobs-space.html">
 <link rel="import" href="../../elements/life-space/life-insurance-space.html">
+<link rel="import" href="../../elements/life-space/marriage-space.html">
 
 <polymer-element name="life-spaces" attributes="player" on-next-space="{{nextSpace}}">
   <template>
@@ -13,6 +14,7 @@
       <tuition-space space id="tuition" player="{{player}}"></tuition-space>
       <jobs-space space id="jobs" player="{{player}}"></jobs-space>
       <life-insurance-space space id="life-insurance" player="{{player}}"></life-insurance-space>
+      <marriage-space space id="marriage" player="{{player}}"></marriage-space>
     </core-selector>
   </template>
   <script src="life-spaces.js"></script>
