@@ -22,11 +22,13 @@ Polymer({
       color: color,
       car: car,
       cash: 10000,
+      crossedTollBridge: false,
       index: this.players.length,
       insurance: [],
       job: null,
       married: false,
       name: name,
+      ownsTollBridge: false,
       space: null
     };
   },
@@ -54,6 +56,7 @@ Polymer({
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
     this.players[0].space = 'orphanage';
     this.players[0].job = { salary: 50000 };
+    this.players[1].space = 'orphanage';
   },
 
   startedChanged: function() {

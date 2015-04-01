@@ -5,6 +5,11 @@ Polymer({
     this.transfer.apply(this, arguments);
   },
 
+  crossedTollBridge: function(event, detail, sender) {
+    this.fire('toll-bridge-crossed', { player: this.player, amount: +sender.getAttribute('amount') });
+    this.next();
+  },
+
   // handled by game
   everyonePays: function(event, detail, sender) {
     this.fire('everyone-pays', { player: this.player, amount: +sender.getAttribute('amount') });

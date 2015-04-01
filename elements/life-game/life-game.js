@@ -14,9 +14,7 @@ Polymer({
   },
 
   everyonePays: function(event, detail, sender) {
-    var otherPlayers = this.players.filter(function(player) {
-      return player.index !== detail.player.index;
-    });
+    var otherPlayers = this.otherPlayers(detail.player);
     otherPlayers.forEach(function(player) {
       player.cash -= detail.amount;
     });
@@ -64,6 +62,12 @@ Polymer({
     this.selectPlayer({}, { index: nextIndex });
   },
 
+  otherPlayers: function(notThisPlayer) {
+    return this.players.filter(function(player) {
+      return player.index !== notThisPlayer.index;
+    });
+  },
+
   playerIndex: function(playerElem) {
     return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
   },
@@ -88,6 +92,23 @@ Polymer({
       this.focus();
       this.fire('select-player', { index: 0 });
     }
+  },
+
+  tollBridgeCrossed: function(event, detail, sender) {
+    var owner = this.tollBridgeOwner();
+    if (owner) {
+      detail.player.cash -= detail.amount;
+      owner.cash += detail.amount;
+    } else {
+      detail.player.ownsTollBridge = true;
+    }
+    detail.player.crossedTollBridge = true;
+  },
+
+  tollBridgeOwner: function() {
+    return (this.players.filter(function(player) {
+      return player.ownsTollBridge;
+    }) || [])[0];
   },
 
   unselectPlayer: function(playerElem) {
