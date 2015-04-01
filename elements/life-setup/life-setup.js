@@ -52,7 +52,7 @@ Polymer({
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
-    this.players[0].space = 'taxes1';
+    this.players[0].space = 'orphanage';
     this.players[0].job = { salary: 50000 };
   },
 

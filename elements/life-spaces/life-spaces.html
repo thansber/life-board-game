@@ -9,6 +9,7 @@
 <link rel="import" href="../../elements/life-space/fire-insurance-space.html">
 <link rel="import" href="../../elements/life-space/taxes-space.html">
 <link rel="import" href="../../elements/life-space/stock-insurance-space.html">
+<link rel="import" href="../../elements/life-space/orphanage-space.html">
 
 <polymer-element name="life-spaces" attributes="player" on-next-space="{{nextSpace}}">
   <template>
@@ -25,6 +26,12 @@
       <stock-insurance-space space id="stock-insurance" player="{{player}}"></stock-insurance-space>
       <taxes-space space id="taxes2" player="{{player}}"></taxes-space>
       <taxes-space space id="taxes3" player="{{player}}"></taxes-space>
+      <orphanage-space space id="orphanage" player="{{player}}"></orphanage-space>
+      <!-- toll bridge -->
+      <!-- property taxes -->
+      <!-- day of reckoning -->
+      <!-- millionaire -->
+      <!-- tycoon -->
     </core-selector>
   </template>
   <script src="life-spaces.js"></script>
