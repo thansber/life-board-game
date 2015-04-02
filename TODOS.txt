@@ -1,14 +1,20 @@
 - a few spaces left to create
-- show message if player already owns/crossed the toll bridge
+-- toll bridge
+--- show message if player already owns/crossed the toll bridge
+-- property taxes
+-- day of reckoning
+-- millionaire
+-- tycoon
+
 - bottom bar
--- revenge
--- stock market
 -- lucky number
 -- toll bridge
 -- space jumper
-- pay day
+
 - cash adjuster
 - losing ownership of the toll bridge
+- show current job if already set
+- do not allow insurance to be bought twice
 
 - use a filter for cash {{ cash | formatCash }}
 - sometimes next player doesn't add borders? (maybe need an async event?)
