@@ -81,7 +81,9 @@ Polymer({
 
   observe: {
     'currentPlayer.cash': 'cashChanged',
-    'currentPlayer.insurance': 'insuranceChanged'
+    'currentPlayer.crossedTollBridge': 'tollBridgeChanged',
+    'currentPlayer.insurance': 'insuranceChanged',
+    'currentPlayer.ownsTollBridge': 'tollBridgeChanged'
   },
 
   otherPlayers: function(notThisPlayer) {
@@ -126,6 +128,14 @@ Polymer({
       this.focus();
       this.fire('select-player', { index: 0 });
     }
+  },
+
+  tollBridgeChanged: function() {
+    var text = '';
+    if (this.currentPlayer.crossedTollBridge) {
+      text = this.currentPlayer.ownsTollBridge ? 'I own the toll bridge' : 'I crossed the toll bridge';
+    }
+    this.currentPlayer.tollBridgeText = text;
   },
 
   tollBridgeCrossed: function(event, detail, sender) {

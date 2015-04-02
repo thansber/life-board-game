@@ -32,7 +32,8 @@ Polymer({
       name: name,
       ownsTollBridge: false,
       sons: 0,
-      space: null
+      space: null,
+      tollBridgeText: ''
     };
   },
 

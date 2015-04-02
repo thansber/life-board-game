@@ -3,6 +3,12 @@
 
 <polymer-element name="toll-bridge-space" attributes="player" extends="life-space" noscript>
   <template>
-    <button grey executor on-tap="{{crossedTollBridge}}" amount="24000">crossed the toll bridge</button>
+    <template if="{{!player.crossedTollBridge}}">
+      <button grey executor on-tap="{{crossedTollBridge}}" amount="24000">crossed the toll bridge</button>
+    </template>
+    <template if="{{player.crossedTollBridge}}">
+      <span message>{{player.tollBridgeText}}</span>
+      <button grey on-tap="{{next}}">Next</button>
+    </template>
   </template>
 </polymer-element
