@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 
-<polymer-element name="life-settings" attributes="player">
+<polymer-element name="life-settings" attributes="player revengePlayers">
   <template>
     <link rel="stylesheet" href="life-settings.css">
     <core-selector valueattr="id" horizontal layout
@@ -16,28 +16,38 @@
       <section id="all"><core-icon icon="menu" alt="All Spaces"></core-icon></section>
     </core-selector>
 
-    <div detail horizontal layout center-justified id="children-detail">
+    <div detail id="children-detail" horizontal layout center center-justified>
       <button light-blue on-tap="{{sonIsBorn}}">A son is born!</button>
       <button pink on-tap="{{daughterIsBorn}}">A daughter is born!</button>
     </div>
 
-    <div detail horizontal layout center-justified id="revenge-detail">
-    REVENGE
+    <div detail horizontal layout center center-justified id="revenge-detail">
+      <template if="{{revengePlayers.length}}">
+        <button gold>Get revenge on</button>
+        <select id="revenge-whom">
+        <template repeat="{{p in revengePlayers}}">
+          <option value="{{p.index}}">{{p.name}}</option>
+        </template>
+        </select>
+      </template>
+      <template if="{{!revengePlayers.length}}">
+        No player has enough cash, send someone back 10 spaces instead
+      </template>
     </div>
 
-    <div detail horizontal layout center-justified id="stock-market-detail">
+    <div detail id="stock-market-detail" horizontal layout center center-justified>
     STOCK MARKET
     </div>
 
-    <div detail horizontal layout center-justified id="lucky-number-detail">
+    <div detail id="lucky-number-detail" horizontal layout center center-justified>
     LUCKY NUMBER
     </div>
 
-    <div detail horizontal layout center-justified id="toll-bridge-detail">
+    <div detail id="toll-bridge-detail" horizontal layout center center-justified>
     TOLL BRIDGE
     </div>
 
-    <div detail horizontal layout center-justified id="all-detail">
+    <div detail id="all-detail" horizontal layout center center-justified>
     ALL SPACES
     </div>
   </template>

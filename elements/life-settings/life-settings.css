@@ -30,7 +30,7 @@ section#all {
 }
 
 [detail].selected {
-  bottom: 1.9em;
+  bottom: 2em;
 }
 
 [detail] button {
@@ -40,4 +40,12 @@ section#all {
 #payday button {
   padding-left: 2em;
   padding-right: 2em;
+}
+
+#revenge-whom {
+  border: 0;
+  font-size: 1em;
+  height: 36px;
+  margin-left: 1em;
+  margin-top: 2px;
 }

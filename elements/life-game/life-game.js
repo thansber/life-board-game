@@ -4,6 +4,12 @@ Polymer({
     return this.$.players.querySelectorAll('[player]');
   },
 
+  cashChanged: function(oldValue, newValue) {
+    this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
+      return player.cash >= 200000;
+    });
+  },
+
   childBirth: function(event, detail, sender) {
     this.everyonePays.apply(this, arguments);
   },
@@ -11,6 +17,7 @@ Polymer({
   created: function() {
     this.currentPlayer = null;
     this.players = [];
+    this.playersForRevenge = [];
   },
 
   currentlySelectedPlayer: function() {
@@ -64,6 +71,10 @@ Polymer({
       }
     }
     this.selectPlayer({}, { index: nextIndex });
+  },
+
+  observe: {
+    'currentPlayer.cash': 'cashChanged'
   },
 
   otherPlayers: function(notThisPlayer) {

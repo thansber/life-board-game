@@ -10,4 +10,5 @@
 - cash adjuster
 - losing ownership of the toll bridge
 
-- sometimes next player doesn't add borders?
+- use a filter for cash {{ cash | formatCash }}
+- sometimes next player doesn't add borders? (maybe need an async event?)

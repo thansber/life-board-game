@@ -5,7 +5,7 @@ Polymer({
   },
 
   created: function() {
-    this.players = [];
+    this.revengePlayers = [];
     this.player = null;
   },
 
