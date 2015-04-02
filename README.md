@@ -12,7 +12,7 @@ the wheel and moving your little cars, but anytime you need to handle
 money, use this application rather than dealing with the paper money that comes
 with the game.
 
-This app uses [Polymer|https://www.polymer-project.org/], and wow is it
+This app uses [Polymer](https://www.polymer-project.org/), and wow is it
 wonderful.
 
 Enjoy.
