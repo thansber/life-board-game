@@ -10,8 +10,15 @@ Polymer({
   },
 
   daughterIsBorn: function() {
+    if (!this.player) {
+      return;
+    }
     this.player.daughters++;
     this.childBorn();
+  },
+
+  luckyNumber: function(event, detail, sender) {
+    this.fire('lucky-number', { player: this.player, amount: +sender.getAttribute('amount') });
   },
 
   payday: function(event, detail, sender) {
@@ -31,8 +38,15 @@ Polymer({
   },
 
   sonIsBorn: function() {
+    if (!this.player) {
+      return;
+    }
     this.player.sons++;
     this.childBorn();
+  },
+
+  tollBridgeLost: function(event, detail, sender) {
+    this.player.ownsTollBridge = false;
   },
 
   transaction: function(event, detail, sender) {

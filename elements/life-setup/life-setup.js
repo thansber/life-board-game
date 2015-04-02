@@ -28,6 +28,7 @@ Polymer({
       index: this.players.length,
       insurance: [],
       job: null,
+      luckyNumber: 0,
       married: false,
       name: name,
       ownsTollBridge: false,
@@ -60,6 +61,7 @@ Polymer({
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
     this.players[0].space = 'orphanage';
     this.players[0].cash = 543210;
+    this.players[0].luckyNumber = 6;
     this.players[0].job = { salary: 50000 };
     this.players[0].insurance.push('stock');
     this.players[1].space = 'orphanage';

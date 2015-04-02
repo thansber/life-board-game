@@ -12,23 +12,10 @@
 <link rel="import" href="../../elements/life-space/orphanage-space.html">
 <link rel="import" href="../../elements/life-space/toll-bridge-space.html">
 
-<polymer-element name="life-spaces" attributes="player" on-next-space="{{nextSpace}}">
+<polymer-element name="life-spaces" attributes="player allSpaces" on-next-space="{{nextSpace}}">
   <template>
     <link rel="stylesheet" href="life-spaces.css">
-    <core-selector id="spaces" valueattr="id">
-      <auto-insurance-space space id="auto-insurance" player="{{player}}"></auto-insurance-space>
-      <tuition-space space id="tuition" player="{{player}}"></tuition-space>
-      <jobs-space space id="jobs" player="{{player}}"></jobs-space>
-      <life-insurance-space space id="life-insurance" player="{{player}}"></life-insurance-space>
-      <marriage-space space id="marriage" player="{{player}}"></marriage-space>
-      <house-space space id="house" player="{{player}}"></house-space>
-      <fire-insurance-space space id="fire-insurance" player="{{player}}"></fire-insurance-space>
-      <taxes-space space id="taxes1" player="{{player}}"></taxes-space>
-      <stock-insurance-space space id="stock-insurance" player="{{player}}"></stock-insurance-space>
-      <taxes-space space id="taxes2" player="{{player}}"></taxes-space>
-      <taxes-space space id="taxes3" player="{{player}}"></taxes-space>
-      <orphanage-space space id="orphanage" player="{{player}}"></orphanage-space>
-      <toll-bridge-space space id="toll-bridge" player="{{player}}"></toll-bridge-space>
+    <core-selector id="spaces" valueattr="id"><!-- populated by JS -->
       <!-- property taxes -->
       <!-- day of reckoning -->
       <!-- millionaire -->

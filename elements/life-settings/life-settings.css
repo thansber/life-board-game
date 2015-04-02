@@ -35,6 +35,8 @@ section#all {
 
 [detail] button {
   margin-left: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 #payday button {

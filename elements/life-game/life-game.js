@@ -47,6 +47,21 @@ Polymer({
     };
   },
 
+  luckyNumberOwner: function() {
+    return (this.players.filter(function(player) {
+      return !!player.luckyNumber;
+    }) || [])[0];
+  },
+
+  luckyNumberSpun: function(event, detail, sender) {
+    var owner = this.luckyNumberOwner();
+    if (!detail.player || !owner) {
+      return;
+    }
+    owner.cash += detail.amount;
+    detail.player.cash -= detail.amount;
+  },
+
   moveDown: function(event, detail, sender) {
     var i = detail.index,
         playerMoving = this.players[i];

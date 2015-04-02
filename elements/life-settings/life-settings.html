@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 
-<polymer-element name="life-settings" attributes="player revengePlayers">
+<polymer-element name="life-settings" attributes="player revengePlayers spaces">
   <template>
     <link rel="stylesheet" href="life-settings.css">
     <core-selector valueattr="id" horizontal layout
@@ -43,16 +43,21 @@
         <button green on-tap="{{transaction}}" amount="120000">7, 8, 9, or 10</button>
       </template>
       <template if="{{!player.hasInsurance.stock}}">
-        Cannot play the stock market because you do not own stock insurance
+        You need stock insurance to play the stock market
       </template>
     </div>
 
     <div detail id="lucky-number-detail" horizontal layout center center-justified>
-    LUCKY NUMBER
+      <button red on-tap="{{luckyNumber}}" amount="24000">I spun the lucky number</button>
     </div>
 
     <div detail id="toll-bridge-detail" horizontal layout center center-justified>
-    TOLL BRIDGE
+      <template if="{{player.ownsTollBridge}}">
+        <button grey on-tap="{{tollBridgeLost}}">I no longer own the toll bridge</button>
+      </template>
+      <template if="{{!player.ownsTollBridge}}">
+        I do not own the toll bridge
+      </template>
     </div>
 
     <div detail id="all-detail" horizontal layout center center-justified>
