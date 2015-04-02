@@ -1,19 +1,20 @@
 Polymer({
   created: function() {
     this.allSpaces = [
-      { id: 'auto-insurance' },
-      { id: 'tuition' },
-      { id: 'jobs' },
-      { id: 'life-insurance' },
-      { id: 'marriage' },
-      { id: 'house' },
-      { id: 'fire-insurance' },
-      { id: 'taxes1', tag: 'taxes-space' },
-      { id: 'stock-insurance' },
-      { id: 'taxes2', tag: 'taxes-space' },
-      { id: 'taxes3', tag: 'taxes-space' },
-      { id: 'orphanage' },
-      { id: 'toll-bridge' }
+      { id: 'auto-insurance', label: 'Auto Insurance' },
+      { id: 'tuition', label: 'Tuition' },
+      { id: 'jobs', label: 'Jobs' },
+      { id: 'life-insurance', label: 'Life Insurance' },
+      { id: 'marriage', label: 'Marriage' },
+      { id: 'house', label: 'House' },
+      { id: 'fire-insurance', label: 'Fire Insurance' },
+      { id: 'taxes1', tag: 'taxes-space', label: 'Taxes 1' },
+      { id: 'stock-insurance', label: 'Stock Insurance' },
+      { id: 'taxes2', tag: 'taxes-space', label: 'Taxes 2' },
+      { id: 'taxes3', tag: 'taxes-space', label: 'Taxes 3' },
+      { id: 'orphanage', label: 'Orphanage' },
+      { id: 'toll-bridge', label: 'Toll Bridge' },
+      { id: 'property-taxes', label: 'Property Taxes' }
     ];
   },
 
