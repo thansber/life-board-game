@@ -19,7 +19,7 @@ section#all {
 
 [detail] {
   background-color: rgb(85, 85, 85);
-  bottom: -5em;
+  bottom: -8em;
   height: 2em;
   padding: 1em 0;
   position: absolute;
@@ -37,6 +37,10 @@ section#all {
   margin-left: 1em;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+#all-detail {
+  height: 5em;
 }
 
 #payday button {

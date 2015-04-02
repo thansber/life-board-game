@@ -60,8 +60,10 @@
       </template>
     </div>
 
-    <div detail id="all-detail" horizontal layout center center-justified>
-    ALL SPACES
+    <div detail id="all-detail" horizontal layout center center-justified wrap>
+      <template repeat="{{space in spaces}}">
+        <button grey on-tap="{{setSpace}}" space="{{space.id}}">{{space.label}}</button>
+      </template>
     </div>
   </template>
   <script src="life-settings.js"></script>

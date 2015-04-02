@@ -25,6 +25,10 @@ Polymer({
     this.fire('pay-day');
   },
 
+  setSpace: function(event, detail, sender) {
+    this.player.space = sender.getAttribute('space');
+  },
+
   settingChanged: function(event, detail, sender) {
     var previousSetting = this.shadowRoot.querySelector('.selected'),
         detailId = detail.item.id;
