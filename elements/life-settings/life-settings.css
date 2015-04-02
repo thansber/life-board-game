@@ -19,13 +19,25 @@ section#all {
 
 [detail] {
   background-color: rgb(85, 85, 85);
-  bottom: 1.9em;
+  bottom: -5em;
   height: 2em;
   padding: 1em 0;
   position: absolute;
+  transition-property: bottom;
+  transition-duration: 0.75s;
+  transition-timing-function: ease;
   width: 100%;
+}
+
+[detail].selected {
+  bottom: 1.9em;
 }
 
 [detail] button {
   margin-left: 1em;
+}
+
+#payday button {
+  padding-left: 2em;
+  padding-right: 2em;
 }

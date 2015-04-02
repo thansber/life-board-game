@@ -72,6 +72,18 @@ Polymer({
     });
   },
 
+  payday: function() {
+    if (!this.currentPlayer) {
+      return;
+    }
+
+    if (!this.currentPlayer.job) {
+      return;
+    }
+
+    this.currentPlayer.cash += this.currentPlayer.job.salary;
+  },
+
   playerIndex: function(playerElem) {
     return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
   },

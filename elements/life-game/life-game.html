@@ -10,6 +10,7 @@
   on-move-up="{{moveUp}}"
   on-move-down="{{moveDown}}"
   on-everyone-pays="{{everyonePays}}"
+  on-pay-day="{{payday}}"
   on-toll-bridge-crossed="{{tollBridgeCrossed}}"
   on-child-birth="{{childBirth}}">
   <template>
@@ -25,7 +26,7 @@
     </div>
 
     <life-spaces player="{{currentPlayer}}"></life-spaces>
-    <life-settings id="settings" player="{{currentPlayer}}"></life-settings>
+    <life-settings id="settings" players="{{players}}" player="{{currentPlayer}}"></life-settings>
     <core-a11y-keys keys="n" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
   </template>
   <script src="life-game.js"></script>

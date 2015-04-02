@@ -5,7 +5,9 @@
 <polymer-element name="life-settings" attributes="player">
   <template>
     <link rel="stylesheet" href="life-settings.css">
-    <core-selector valueattr="id" horizontal layout>
+    <core-selector valueattr="id" horizontal layout
+      on-core-select="{{settingChanged}}">
+      <section id="payday" flex><button red on-tap="{{payday}}">PAY DAY!</button></section>
       <section id="children" flex>Children</section>
       <section id="revenge" flex>Revenge</section>
       <section id="stock-market" flex>Stock Market</section>
@@ -14,9 +16,29 @@
       <section id="all"><core-icon icon="menu" alt="All Spaces"></core-icon></section>
     </core-selector>
 
-    <div horizontal layout center-justified id="children-detail" detail="children">
+    <div detail horizontal layout center-justified id="children-detail">
       <button light-blue on-tap="{{sonIsBorn}}">A son is born!</button>
       <button pink on-tap="{{daughterIsBorn}}">A daughter is born!</button>
+    </div>
+
+    <div detail horizontal layout center-justified id="revenge-detail">
+    REVENGE
+    </div>
+
+    <div detail horizontal layout center-justified id="stock-market-detail">
+    STOCK MARKET
+    </div>
+
+    <div detail horizontal layout center-justified id="lucky-number-detail">
+    LUCKY NUMBER
+    </div>
+
+    <div detail horizontal layout center-justified id="toll-bridge-detail">
+    TOLL BRIDGE
+    </div>
+
+    <div detail horizontal layout center-justified id="all-detail">
+    ALL SPACES
     </div>
   </template>
   <script src="life-settings.js"></script>
