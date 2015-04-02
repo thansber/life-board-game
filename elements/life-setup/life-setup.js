@@ -23,12 +23,14 @@ Polymer({
       car: car,
       cash: 10000,
       crossedTollBridge: false,
+      daughters: 0,
       index: this.players.length,
       insurance: [],
       job: null,
       married: false,
       name: name,
       ownsTollBridge: false,
+      sons: 0,
       space: null
     };
   },

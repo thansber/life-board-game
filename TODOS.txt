@@ -1,7 +1,6 @@
 - a few spaces left to create
 - show message if player already owns/crossed the toll bridge
 - bottom bar
--- children
 -- revenge
 -- stock market
 -- lucky number
@@ -9,5 +8,6 @@
 -- space jumper
 - pay day
 - cash adjuster
+- losing ownership of the toll bridge
 
 - sometimes next player doesn't add borders?

@@ -5,3 +5,9 @@
   outline: none;
   position: relative;
 }
+
+#settings {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}

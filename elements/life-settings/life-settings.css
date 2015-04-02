@@ -1,0 +1,31 @@
+section {
+  cursor: pointer;
+  font-size: 0.75em;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+section:hover {
+  color: rgb(46, 160, 221);
+}
+
+section[active] {
+  background-color: rgb(85, 85, 85);
+}
+
+section#all {
+  padding: 0.5em;
+}
+
+[detail] {
+  background-color: rgb(85, 85, 85);
+  bottom: 1.9em;
+  height: 2em;
+  padding: 1em 0;
+  position: absolute;
+  width: 100%;
+}
+
+[detail] button {
+  margin-left: 1em;
+}

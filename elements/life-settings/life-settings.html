@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
+
+<polymer-element name="life-settings" attributes="player">
+  <template>
+    <link rel="stylesheet" href="life-settings.css">
+    <core-selector valueattr="id" horizontal layout>
+      <section id="children" flex>Children</section>
+      <section id="revenge" flex>Revenge</section>
+      <section id="stock-market" flex>Stock Market</section>
+      <section id="lucky-number" flex>Lucky Number</section>
+      <section id="toll-bridge" flex>Toll Bridge</section>
+      <section id="all"><core-icon icon="menu" alt="All Spaces"></core-icon></section>
+    </core-selector>
+
+    <div horizontal layout center-justified id="children-detail" detail="children">
+      <button light-blue on-tap="{{sonIsBorn}}">A son is born!</button>
+      <button pink on-tap="{{daughterIsBorn}}">A daughter is born!</button>
+    </div>
+  </template>
+  <script src="life-settings.js"></script>
+</polymer-element>

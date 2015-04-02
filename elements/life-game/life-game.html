@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/core-a11y-keys/core-a11y-keys.html">
 <link rel="import" href="../../elements/life-player/life-player.html">
 <link rel="import" href="../../elements/life-spaces/life-spaces.html">
+<link rel="import" href="../../elements/life-settings/life-settings.html">
 
 <polymer-element name="life-game" attributes="players started"
   on-select-player="{{selectPlayer}}"
@@ -9,7 +10,8 @@
   on-move-up="{{moveUp}}"
   on-move-down="{{moveDown}}"
   on-everyone-pays="{{everyonePays}}"
-  on-toll-bridge-crossed="{{tollBridgeCrossed}}">
+  on-toll-bridge-crossed="{{tollBridgeCrossed}}"
+  on-child-birth="{{childBirth}}">
   <template>
     <link rel="stylesheet" href="life-game.css">
     <div vertical layout id="players">
@@ -21,7 +23,9 @@
           notLast="{{i != players.length - 1}}"></life-player>
       </template>
     </div>
+
     <life-spaces player="{{currentPlayer}}"></life-spaces>
+    <life-settings id="settings" player="{{currentPlayer}}"></life-settings>
     <core-a11y-keys keys="n" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
   </template>
   <script src="life-game.js"></script>

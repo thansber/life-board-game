@@ -4,6 +4,10 @@ Polymer({
     return this.$.players.querySelectorAll('[player]');
   },
 
+  childBirth: function(event, detail, sender) {
+    this.everyonePays.apply(this, arguments);
+  },
+
   created: function() {
     this.currentPlayer = null;
     this.players = [];
