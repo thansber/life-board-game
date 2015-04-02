@@ -33,6 +33,10 @@ Polymer({
   sonIsBorn: function() {
     this.player.sons++;
     this.childBorn();
+  },
+
+  transaction: function(event, detail, sender) {
+    this.player.cash += +sender.getAttribute('amount');
   }
 
 });

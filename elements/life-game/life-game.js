@@ -32,6 +32,12 @@ Polymer({
     detail.player.cash += (detail.amount * otherPlayers.length);
   },
 
+  insuranceChanged: function(changes) {
+    this.currentPlayer.insurance.forEach(function(insuranceType) {
+      this.currentPlayer.hasInsurance[insuranceType] = true;
+    }, this);
+  },
+
   keyHandler: function(ev) {
     switch (ev.detail.key) {
       case 'n':
@@ -74,7 +80,8 @@ Polymer({
   },
 
   observe: {
-    'currentPlayer.cash': 'cashChanged'
+    'currentPlayer.cash': 'cashChanged',
+    'currentPlayer.insurance': 'insuranceChanged'
   },
 
   otherPlayers: function(notThisPlayer) {

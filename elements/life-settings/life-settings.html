@@ -36,7 +36,15 @@
     </div>
 
     <div detail id="stock-market-detail" horizontal layout center center-justified>
-    STOCK MARKET
+      <template if="{{player.hasInsurance.stock}}">
+        I played the stock market and spun a
+        <button red on-tap="{{transaction}}" amount="-60000">1, 2, or 3</button>
+        <button grey>4, 5, or 6</button>
+        <button green on-tap="{{transaction}}" amount="120000">7, 8, 9, or 10</button>
+      </template>
+      <template if="{{!player.hasInsurance.stock}}">
+        Cannot play the stock market because you do not own stock insurance
+      </template>
     </div>
 
     <div detail id="lucky-number-detail" horizontal layout center center-justified>

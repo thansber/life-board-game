@@ -24,6 +24,7 @@ Polymer({
       cash: 10000,
       crossedTollBridge: false,
       daughters: 0,
+      hasInsurance: {},
       index: this.players.length,
       insurance: [],
       job: null,
@@ -59,6 +60,7 @@ Polymer({
     this.players[0].space = 'orphanage';
     this.players[0].cash = 543210;
     this.players[0].job = { salary: 50000 };
+    this.players[0].insurance.push('stock');
     this.players[1].space = 'orphanage';
   },
 
