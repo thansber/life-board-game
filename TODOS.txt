@@ -5,7 +5,6 @@
 -- tycoon
 
 - cash adjuster
-- show current job if already set
 - do not allow insurance to be bought twice
 
 - use a filter for cash {{ cash | formatCash }}

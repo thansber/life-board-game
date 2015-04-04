@@ -4,13 +4,18 @@
 <polymer-element name="jobs-space" attributes="player" extends="life-space">
   <template>
     <link rel="stylesheet" href="jobs-space.css">
-    <select id="jobs" on-change="{{setJob}}">
-      <option value="">--What profession are you?--</option>
-    <template repeat="{{job in jobs}}">
-      <option value="{{job.id}}">{{job.desc}}</option>
+    <template if="{{!player.job}}">
+      <select id="jobs" on-change="{{setJob}}">
+        <option value="">--What profession are you?--</option>
+      <template repeat="{{job in jobs}}">
+        <option value="{{job.id}}">{{job.desc}}</option>
+      </template>
+      </select>
     </template>
-    </select>
-    <button green next on-tap="{{next}}">Next</button>
+    <template if="{{player.job}}">
+      you are already a <span>{{player.job.desc}}</span>
+    </template>
+    <button grey next on-tap="{{next}}">Next</button>
     <template if="{{invalid}}"><span error>Please select a job</span></template>
   </template>
   <script src="jobs-space.js"></script>
