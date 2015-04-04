@@ -1,9 +1,7 @@
 :host {
-  background-color: rgb(85, 85, 85);
-  color: rgb(227, 227, 227);
   display: block;
   overflow: hidden;
-  padding: 0 1em 6em 1em;
+  padding: 0 1em 1em 1em;
 }
 
 :host section {

@@ -1,9 +1,9 @@
 :host {
   color: rgb(238, 238, 238);
   font-size: 1.25em;
-  margin-top: 1em;
   outline: none;
   position: relative;
+  top: 10em;
 }
 
 #settings {

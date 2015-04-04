@@ -1,0 +1,16 @@
+:host {
+  height: 3em;
+  text-align: center;
+  width: 100%;
+}
+
+:host #during {
+  cursor: pointer;
+  width: 100%;
+}
+
+:host #during core-icon-button {
+  height: 24px;
+  margin: 0;
+  padding: 0;
+}

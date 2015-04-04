@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+
+<polymer-element name="life-menu" attributes="started">
+  <template>
+    <link rel="stylesheet" href="life-menu.css">
+    <section id="during" hiding?="{{!started}}" on-tap="{{pauseGame}}">
+      <core-icon-button icon="hardware:keyboard-arrow-down" title="I need to make changes"></core-icon-button>
+    </section>
+  </template>
+  <script>
+    Polymer({
+      pauseGame: function() {
+        this.started = false;
+      }
+    });
+  </script>
+</polymer-element>

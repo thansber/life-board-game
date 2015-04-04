@@ -23,9 +23,6 @@
       <button add-player grey on-tap="{{addPlayer}}">Add player</button>
       <button start-game green on-tap="{{startGame}}">Start Game</button>
     </section>
-    <section id="during" hiding?="{{!started}}" on-tap="{{pauseGame}}" horizontal center-justified layout>
-      <core-icon-button icon="hardware:keyboard-arrow-down" title="I need to make changes"></core-icon-button>
-    </section>
   </template>
   <script src="life-setup.js"></script>
 </polymer-element>

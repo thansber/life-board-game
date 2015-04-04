@@ -12,9 +12,29 @@ body {
   overflow-x: hidden;
 }
 
+life-setup,
+life-menu {
+  background-color: rgb(85, 85, 85);
+  color: rgb(227, 227, 227);
+  position: absolute;
+  transition-property: top;
+  transition-duration: 0.75s;
+  transition-timing-function: ease;
+  width: 100%;
+}
+
+life-setup,
+body.started life-menu {
+  top: 0;
+}
+
+life-menu,
 body.started life-setup {
-  height: 1.5em;
-  padding-bottom: 1em;
+  top: -20em;
+}
+
+body.started life-game {
+  top: 3em;
 }
 
 body.started /deep/ life-spaces {

@@ -38,10 +38,6 @@ Polymer({
     };
   },
 
-  pauseGame: function() {
-    this.started = false;
-  },
-
   playersChanged: function(changes) {
     var removedColor;
     if (changes[0].removed.length) {
