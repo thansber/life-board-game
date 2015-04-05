@@ -1,8 +1,6 @@
 - a few spaces left to create
--- day of reckoning
 -- millionaire
 --- allow entry of lucky number
--- tycoon
 
 - cash adjuster
 - do not allow insurance to be bought twice

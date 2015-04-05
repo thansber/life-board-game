@@ -13,7 +13,9 @@
   on-pay-day="{{payday}}"
   on-toll-bridge-crossed="{{tollBridgeCrossed}}"
   on-child-birth="{{childBirth}}"
-  on-lucky-number="{{luckyNumberSpun}}">
+  on-lucky-number="{{luckyNumberSpun}}"
+  on-millionaire="{{becomeMillionaire}}"
+  on-tycoon="{{becomeTycoon}}">
   <template>
     <link rel="stylesheet" href="life-game.css">
     <div vertical layout id="players">
@@ -30,7 +32,8 @@
     <life-settings id="settings"
       player="{{currentPlayer}}"
       revengePlayers="{{playersForRevenge}}"
-      spaces="{{spaces}}"></life-settings>
+      spaces="{{spaces}}"
+      hidden?="{{gameOver}}"></life-settings>
     <core-a11y-keys keys="n" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
   </template>
   <script src="life-game.js"></script>

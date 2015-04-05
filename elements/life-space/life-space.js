@@ -5,8 +5,21 @@ Polymer({
     this.transfer.apply(this, arguments);
   },
 
+  becomeMillionaire: function(event, detail, sender) {
+    this.fire('millionaire', { player: this.player });
+  },
+
+  becomeTycoon: function(evemt, detail, sender) {
+    this.fire('tycoon', { player: this.player });
+  },
+
   crossedTollBridge: function(event, detail, sender) {
     this.fire('toll-bridge-crossed', { player: this.player, amount: +sender.getAttribute('amount') });
+    this.next();
+  },
+
+  dayOfReckoning: function(event, detail, sender) {
+    this.transaction(+sender.getAttribute('amount') * (this.player.sons + this.player.daughters));
     this.next();
   },
 

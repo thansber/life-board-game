@@ -4,6 +4,28 @@ Polymer({
     return this.$.players.querySelectorAll('[player]');
   },
 
+  becomeMillionaire: function(event, detail, sender) {
+    var anyOtherMillionaires = this.otherPlayers(detail.player)
+      .some(function(player) {
+        return !!player.millionaire;
+      });
+    detail.player.millionaire = true;
+    if (!anyOtherMillionaires) {
+      detail.player.cash += 240000;
+    }
+    if (detail.player.hasInsurance.life) {
+      detail.player.cash += 8000;
+    }
+    if (detail.player.hasInsurance.stock) {
+      detail.player.cash += 120000;
+    }
+  },
+
+  becomeTycoon: function(event, detail, sender) {
+    detail.player.tycoon = true;
+    this.gameOver = true;
+  },
+
   cashChanged: function(oldValue, newValue) {
     this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
@@ -39,6 +61,9 @@ Polymer({
   },
 
   keyHandler: function(ev) {
+    if (this.gameOver) {
+      return;
+    }
     switch (ev.detail.key) {
       case 'n':
       case 'N':
@@ -133,6 +158,11 @@ Polymer({
 
   selectPlayer: function(event, detail, sender) {
     var index = detail.index;
+
+    if (this.gameOver) {
+      return;
+    }
+
     this.unselectPlayer(this.currentlySelectedPlayer());
     this.allPlayers().item(index).setAttribute('active', '');
     this.currentPlayer = this.players[index];

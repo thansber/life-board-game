@@ -14,7 +14,9 @@ Polymer({
       { id: 'taxes3', tag: 'taxes-space', label: 'Taxes 3' },
       { id: 'orphanage', label: 'Orphanage' },
       { id: 'toll-bridge', label: 'Toll Bridge' },
-      { id: 'property-taxes', label: 'Property Taxes' }
+      { id: 'property-taxes', label: 'Property Taxes' },
+      { id: 'day-of-reckoning', label: 'Day of Reckoning' },
+      { id: 'ending', label: 'Ending' }
     ];
   },
 

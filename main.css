@@ -41,6 +41,11 @@ body.started /deep/ life-spaces {
   display: inline-block;
 }
 
+html /deep/ [text] {
+  display: inline-block;
+  margin-top: 5px;
+}
+
 html /deep/ [red] {
   background: linear-gradient(rgb(223, 51, 54), rgb(191, 50, 53));
 }

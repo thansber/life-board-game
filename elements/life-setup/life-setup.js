@@ -55,7 +55,7 @@ Polymer({
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
-    this.players[0].space = 'orphanage';
+    this.players[0].space = 'ending';
     this.players[0].cash = 543210;
     this.players[0].luckyNumber = 6;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
