@@ -16,6 +16,13 @@ Polymer({
     this.fire('child-birth', { player: this.player, amount: 1000 });
   },
 
+  closeSettings: function() {
+    var previousSetting = this.shadowRoot.querySelector('.selected');
+    if (previousSetting) {
+      previousSetting.classList.toggle('selected');
+    }
+  },
+
   created: function() {
     this.revengePlayers = [];
     this.player = null;
@@ -46,11 +53,9 @@ Polymer({
   },
 
   settingChanged: function(event, detail, sender) {
-    var previousSetting = this.shadowRoot.querySelector('.selected'),
-        detailId = detail.item.id;
-    if (previousSetting) {
-      previousSetting.classList.toggle('selected');
-    }
+    var detailId = detail.item.id;
+    this.closeSettings();
+
     if (/payday/.test(detailId)) {
       return;
     }

@@ -65,6 +65,9 @@ Polymer({
       return;
     }
     switch (ev.detail.key) {
+      case 'esc':
+        this.$.settings.closeSettings();
+        break;
       case 'n':
       case 'N':
         this.nextPlayer();
