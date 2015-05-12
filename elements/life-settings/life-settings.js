@@ -50,6 +50,7 @@ Polymer({
 
   setSpace: function(event, detail, sender) {
     this.player.space = sender.getAttribute('space');
+    this.closeSettings();
   },
 
   settingChanged: function(event, detail, sender) {
