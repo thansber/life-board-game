@@ -154,6 +154,9 @@ Polymer({
 
   removePlayer: function(event, detail, sender) {
     this.players.splice(detail.index, 1);
+    this.players.forEach(function(player, i) {
+      player.index = i;
+    });
   },
 
   selectPlayer: function(event, detail, sender) {
