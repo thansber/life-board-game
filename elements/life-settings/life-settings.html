@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="life-settings.css">
     <core-selector valueattr="id" horizontal layout
       on-core-select="{{settingChanged}}">
+      <section id="adjuster" flex>Cash Adjuster</section>
       <section id="payday" flex><button red on-tap="{{payday}}">PAY DAY!</button></section>
       <section id="children" flex>Children</section>
       <section id="revenge" flex>Revenge</section>
@@ -16,12 +17,19 @@
       <section id="all"><core-icon icon="menu" alt="All Spaces"></core-icon></section>
     </core-selector>
 
+    <div detail id="adjuster-detail" horizontal layout center center-justified>
+      <button green add adjuster multiplier="1" on-tap="{{adjustCash}}">+</button>
+      <input id="adjust-value" type="text" maxlength="3" on-focus="{{highlight}}" />
+      <button red minus adjuster multiplier="-1" on-tap="{{adjustCash}}">-</button>
+      <label for="adjust-value">(x1000)</label>
+    </div>
+
     <div detail id="children-detail" horizontal layout center center-justified>
       <button light-blue on-tap="{{sonIsBorn}}">A son is born!</button>
       <button pink on-tap="{{daughterIsBorn}}">A daughter is born!</button>
     </div>
 
-    <div detail horizontal layout center center-justified id="revenge-detail">
+    <div detail id="revenge-detail" horizontal layout center center-justified>
       <template if="{{revengePlayers.length}}">
         <button gold>Get revenge on</button>
         <select id="revenge-whom">
@@ -29,6 +37,7 @@
           <option value="{{p.index}}">{{p.name}}</option>
         </template>
         </select>
+        <span>or send them back 10 spaces</span>
       </template>
       <template if="{{!revengePlayers.length}}">
         No player has enough cash, send someone back 10 spaces instead

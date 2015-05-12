@@ -57,5 +57,35 @@ section#all {
   font-size: 1em;
   height: 36px;
   margin-left: 1em;
+  margin-right: 1em;
   margin-top: 2px;
+}
+
+button[adjuster] {
+  font-size: 2em;
+  margin-left: 0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+button[add][adjuster] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0;
+}
+
+button[minus][adjuster] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+
+#adjust-value {
+  font-size: 2em;
+  text-align: center;
+  width: 2.5em;
+}
+
+label[for="adjust-value"] {
+  margin-left: 1em;
 }

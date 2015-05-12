@@ -1,5 +1,17 @@
 Polymer({
 
+  adjustCash: function(event, detail, sender) {
+    var adjustValue = this.$['adjust-value'],
+        amountChanged = +sender.getAttribute('multiplier') * +adjustValue.value * 1000;
+    if (isNaN(amountChanged)) {
+      adjustValue.value = '';
+      adjustValue.focus();
+      return;
+    }
+    adjustValue.focus();
+    this.player.cash += amountChanged;
+  },
+
   childBorn: function() {
     this.fire('child-birth', { player: this.player, amount: 1000 });
   },
@@ -15,6 +27,10 @@ Polymer({
     }
     this.player.daughters++;
     this.childBorn();
+  },
+
+  highlight: function(event, detail, sender) {
+    sender.select();
   },
 
   luckyNumber: function(event, detail, sender) {
