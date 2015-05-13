@@ -56,6 +56,10 @@ Polymer({
     this.fire('pay-day');
   },
 
+  playerChanged: function() {
+    this.closeSettings();
+  },
+
   setSpace: function(event, detail, sender) {
     this.player.space = sender.getAttribute('space');
     this.closeSettings();
