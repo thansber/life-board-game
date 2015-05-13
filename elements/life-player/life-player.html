@@ -18,7 +18,8 @@
           <core-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></core-icon-button>
         </template>
       </div>
-      <div id="cash" hidden?="{{!started}}">${{player.formattedCash}}</div>
+      <div id="cash" cash hidden?="{{!started}}">${{player.cash | formatCash}}</div>
+      <div id="changingCash" cash hidden>${{player.cashChange | formatCash}}</div>
       <div car color="{{player.color}}">
         <core-icon icon="car-icons-large:{{player.car}}" player-car></core-icon>
       </div>

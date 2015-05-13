@@ -30,11 +30,19 @@
   opacity: 0.2;
 }
 
-:host #cash {
+:host [cash] {
   font-size: 1.25em;
   margin-right: 1em;
   text-align: right;
   width: 8em;
+}
+
+:host #changingCash.adding {
+  color: rgb(93, 156, 70);
+}
+
+:host #changingCash.removing {
+  color: rgb(223, 51, 54);
 }
 
 :host [car] /deep/ core-icon {
