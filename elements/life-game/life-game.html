@@ -35,7 +35,7 @@
       player="{{currentPlayer}}"
       revengePlayers="{{playersForRevenge}}"
       spaces="{{spaces}}"
-      hidden?="{{gameOver}}"></life-settings>
+      hidden?="{{!started || gameOver}}"></life-settings>
     <core-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
   </template>
   <script src="life-game.js"></script>
