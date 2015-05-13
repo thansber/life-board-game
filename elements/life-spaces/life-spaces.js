@@ -32,7 +32,8 @@ Polymer({
       { id: 'toll-bridge', label: 'Toll Bridge' },
       { id: 'property-taxes', label: 'Property Taxes' },
       { id: 'day-of-reckoning', label: 'Day of Reckoning' },
-      { id: 'ending', label: 'Ending' }
+      { id: 'ending', label: 'Ending' },
+      { id: 'failed' }
     ];
   },
 

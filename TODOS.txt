@@ -1,5 +1,4 @@
 - allow entry of lucky number
-- life failure button
 
 - use a filter for cash {{ cash | formatCash }}
 - cash change animation - color + incrementer

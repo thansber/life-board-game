@@ -71,7 +71,9 @@
 
     <div detail id="all-detail" horizontal layout center center-justified wrap>
       <template repeat="{{space in spaces}}">
-        <button grey on-tap="{{setSpace}}" space="{{space.id}}">{{space.label}}</button>
+        <template if="{{space.label}}">
+          <button grey on-tap="{{setSpace}}" space="{{space.id}}">{{space.label}}</button>
+        </template>
       </template>
     </div>
   </template>

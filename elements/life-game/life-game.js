@@ -54,6 +54,12 @@ Polymer({
     detail.player.cash += (detail.amount * otherPlayers.length);
   },
 
+  failedAtLife: function(event, detail, sender) {
+    detail.player.lostEverything = true;
+    detail.player.space = 'failed';
+    detail.player.cash = 0;
+  },
+
   insuranceChanged: function(changes) {
     this.currentPlayer.insurance.forEach(function(insuranceType) {
       this.currentPlayer.hasInsurance[insuranceType] = true;
@@ -119,6 +125,7 @@ Polymer({
         nextIndex = 0;
       }
     }
+
     this.selectPlayer({}, { index: nextIndex });
   },
 

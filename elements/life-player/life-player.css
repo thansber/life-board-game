@@ -26,6 +26,10 @@
   width: 24px;
 }
 
+:host #player.loser {
+  opacity: 0.2;
+}
+
 :host #cash {
   font-size: 1.25em;
   margin-right: 1em;

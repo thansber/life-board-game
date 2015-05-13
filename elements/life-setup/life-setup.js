@@ -28,6 +28,7 @@ Polymer({
       index: this.players.length,
       insurance: [],
       job: null,
+      lostEverything: false,
       luckyNumber: 0,
       married: false,
       name: name,
