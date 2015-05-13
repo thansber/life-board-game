@@ -31,7 +31,7 @@
 
     <div detail id="revenge-detail" horizontal layout center center-justified>
       <template if="{{revengePlayers.length}}">
-        <button gold>Get revenge on</button>
+        <button gold on-tap="{{getRevenge}}" amount="200000">Get revenge on</button>
         <select id="revenge-whom">
         <template repeat="{{p in revengePlayers}}">
           <option value="{{p.index}}">{{p.name}}</option>

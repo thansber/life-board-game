@@ -1,9 +1,5 @@
-- a few spaces left to create
--- millionaire
---- allow entry of lucky number
-
-- cash adjuster
-- do not allow insurance to be bought twice
+- allow entry of lucky number
+- life failure button
 
 - use a filter for cash {{ cash | formatCash }}
 - cash change animation - color + incrementer

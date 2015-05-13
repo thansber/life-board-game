@@ -37,6 +37,13 @@ Polymer({
     this.childBorn();
   },
 
+  getRevenge: function(event, detail, sender) {
+    var revengeOnIndex = +this.$['revenge-detail'].querySelector('#revenge-whom').selectedIndex,
+        amount = +sender.getAttribute('amount');
+    this.player.cash += amount;
+    this.revengePlayers[revengeOnIndex].cash -= amount;
+  },
+
   highlight: function(event, detail, sender) {
     sender.select();
   },
