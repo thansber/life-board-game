@@ -19,6 +19,10 @@
   padding: 0em 0.5em;
 }
 
+:host [actions] /deep/ core-icon-button[first] {
+  margin-top: 24px;
+}
+
 :host [actions] /deep/ core-icon {
   height: 24px;
   margin: 0;

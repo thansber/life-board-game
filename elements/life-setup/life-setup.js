@@ -2,13 +2,17 @@ Polymer({
 
   addPlayer: function() {
     var swatch = this.$.swatches.selectedItem,
+        car = this.$.cars.selected,
         player;
-    if (swatch.hasAttribute('disabled')) {
+    if (!swatch || swatch.hasAttribute('disabled')) {
+      return;
+    }
+    if (!car) {
       return;
     }
     swatch.setAttribute('disabled', true);
 
-    this.players.push(this.createPlayer(this.name, this.$.swatches.selected, this.$.cars.selected));
+    this.players.push(this.createPlayer(this.name, this.$.swatches.selected, car));
     this.$.swatches.selected = '';
   },
 
@@ -53,7 +57,10 @@ Polymer({
     this.carChoices = ['car', 'classic-car', 'antique-car', 'suv', 'van', 'truck'];
     this.colorChoices = ['red', 'pink', 'orange', 'green', 'blue', 'cyan', 'white'];
 
-    // TODO: remove this
+    //this.setupFakeData();
+  },
+
+  setupFakeData: function() {
     this.players.push(this.createPlayer('Madelyn', 'red', 'car'));
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));

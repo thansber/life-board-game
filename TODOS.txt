@@ -1,1 +1,1 @@
-- sometimes next player doesn't add borders? (maybe need an async event?)
+- hide settings until game started

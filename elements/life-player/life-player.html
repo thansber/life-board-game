@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 
-<polymer-element name="life-player" attributes="player started notFirst notLast">
+<polymer-element name="life-player" attributes="player started first notFirst notLast">
   <template>
     <link rel="stylesheet" href="life-player.css">
     <div horizontal layout center id="player" player-index="{{player.index}}"
@@ -13,7 +13,7 @@
         <template if="{{notFirst}}">
           <core-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></core-icon-button>
         </template>
-        <core-icon-button icon="highlight-remove" player-action="remove-player"></core-icon-button>
+        <core-icon-button first?="{{first}}" icon="highlight-remove" player-action="remove-player"></core-icon-button>
         <template if="{{notLast}}">
           <core-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></core-icon-button>
         </template>
