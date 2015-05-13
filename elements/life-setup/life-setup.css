@@ -90,6 +90,11 @@
   filter: drop-shadow(0 0 6px rgb(255, 255, 255));
 }
 
+:host [start-game][disabled] {
+  cursor: default;
+  opacity: 0.25;
+}
+
 :host #during {
   cursor: pointer;
   margin-top: -6em;
