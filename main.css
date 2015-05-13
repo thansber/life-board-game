@@ -46,35 +46,43 @@ html /deep/ [text] {
   margin-top: 5px;
 }
 
-html /deep/ [red] {
+html /deep/ [red],
+html /deep/ [insurance-color="red"] {
   background: linear-gradient(rgb(223, 51, 54), rgb(191, 50, 53));
 }
 
-html /deep/ [red]:hover {
+html /deep/ [red]:hover,
+html /deep/ [insurance-color="red"]:hover {
   background: linear-gradient(rgb(191, 50, 53), rgb(223, 51, 54));
 }
 
-html /deep/ [orange] {
+html /deep/ [orange],
+html /deep/ [insurance-color="orange"] {
   background: linear-gradient(rgb(255, 200, 100), rgb(255, 165, 0));
 }
 
-html /deep/ [orange]:hover {
+html /deep/ [orange]:hover,
+html /deep/ [insurance-color="orange"]:hover {
   background: linear-gradient(rgb(255, 165, 0), rgb(255, 200, 100));
 }
 
-html /deep/ [green] {
+html /deep/ [green],
+html /deep/ [insurance-color="green"] {
   background: linear-gradient(rgb(93, 156, 70), rgb(61, 104, 50));
 }
 
-html /deep/ [green]:hover {
+html /deep/ [green]:hover,
+html /deep/ [insurance-color="green"]:hover {
   background: linear-gradient(rgb(61, 104, 50), rgb(93, 156, 70));
 }
 
-html /deep/ [blue] {
+html /deep/ [blue],
+html /deep/ [insurance-color="blue"] {
   background: linear-gradient(rgb(0, 0, 255), rgb(0, 0, 127));
 }
 
-html /deep/ [blue]:hover {
+html /deep/ [blue]:hover,
+html /deep/ [insurance-color="blue"]:hover {
   background: linear-gradient(rgb(0, 0, 127), rgb(0, 0, 255));
 }
 
@@ -195,19 +203,23 @@ html /deep/ button:active {
   top: 1px;
 }
 
-html /deep/ button[red] {
+html /deep/ button[red],
+html /deep/ button[insurance-color="red"] {
   border: 2px solid rgb(149, 43, 44);
 }
 
-html /deep/ button[orange] {
+html /deep/ button[orange],
+html /deep/ button[insurance-color="orange"] {
   border: 2px solid rgb(238, 156, 51);
 }
 
-html /deep/ button[green] {
+html /deep/ button[green],
+html /deep/ button[insurance-color="green"] {
   border: 2px solid rgb(34, 87, 38);
 }
 
-html /deep/ button[blue] {
+html /deep/ button[blue],
+html /deep/ button[insurance-color="blue"] {
   border: 2px solid rgb(0, 0, 127);
 }
 
