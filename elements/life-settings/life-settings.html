@@ -5,7 +5,7 @@
 <polymer-element name="life-settings" attributes="player revengePlayers spaces">
   <template>
     <link rel="stylesheet" href="life-settings.css">
-    <core-selector valueattr="id" horizontal layout
+    <core-selector valueattr="id" id="settingSelector" horizontal layout
       on-core-select="{{settingChanged}}">
       <section id="adjuster" flex>Cash Adjuster</section>
       <section id="payday" flex><button red on-tap="{{payday}}">PAY DAY!</button></section>

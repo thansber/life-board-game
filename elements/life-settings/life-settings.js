@@ -20,6 +20,7 @@ Polymer({
     var previousSetting = this.shadowRoot.querySelector('.selected');
     if (previousSetting) {
       previousSetting.classList.toggle('selected');
+      this.$.settingSelector.selected = null;
     }
   },
 
@@ -55,6 +56,9 @@ Polymer({
 
   settingChanged: function(event, detail, sender) {
     var detailId = detail.item.id;
+    if (!this.$.settingSelector.selected) {
+      return;
+    }
     this.closeSettings();
 
     if (/payday/.test(detailId)) {
