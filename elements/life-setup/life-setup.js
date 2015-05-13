@@ -19,9 +19,10 @@ Polymer({
 
   createPlayer: function(name, color, car) {
     return {
-      color: color,
+      canHaveLuckyNumber: true,
       car: car,
       cash: 10000,
+      color: color,
       crossedTollBridge: false,
       daughters: 0,
       hasInsurance: {},
@@ -31,6 +32,7 @@ Polymer({
       lostEverything: false,
       luckyNumber: 0,
       married: false,
+      millionaire: false,
       name: name,
       ownsTollBridge: false,
       sons: 0,
@@ -56,9 +58,8 @@ Polymer({
     this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
     this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
     this.players.push(this.createPlayer('Will', 'green', 'suv'));
-    this.players[0].space = 'auto-insurance';
+    this.players[0].space = 'ending';
     this.players[0].cash = 543210;
-    this.players[0].luckyNumber = 6;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
     this.players[0].insurance.push('auto', 'life', 'stock');
     this.players[1].space = 'orphanage';

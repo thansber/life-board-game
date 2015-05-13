@@ -42,6 +42,10 @@ Polymer({
     this.fire('next-space');
   },
 
+  setLuckyNumber: function(event, detail, sender) {
+    this.player.luckyNumber = +sender.getAttribute('lucky-number');
+  },
+
   taxes: function(event, detail, sender) {
     this.transaction(this.player.job.salary / -2);
     this.next();

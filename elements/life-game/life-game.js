@@ -5,13 +5,19 @@ Polymer({
   },
 
   becomeMillionaire: function(event, detail, sender) {
-    var anyOtherMillionaires = this.otherPlayers(detail.player)
-      .some(function(player) {
+    var
+      otherPlayers = this.otherPlayers(detail.player),
+      anyOtherMillionaires = otherPlayers.some(function(player) {
         return !!player.millionaire;
       });
+
     detail.player.millionaire = true;
+    detail.player.space = 'millionaire';
     if (!anyOtherMillionaires) {
       detail.player.cash += 240000;
+      otherPlayers.forEach(function(player) {
+        player.canHaveLuckyNumber = false;
+      });
     }
     if (detail.player.hasInsurance.life) {
       detail.player.cash += 8000;

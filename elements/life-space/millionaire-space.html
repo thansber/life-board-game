@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="life-space.html">
+
+<polymer-element name="millionaire-space" attributes="player" extends="life-space">
+  <template>
+    <span text>is a millionaire!</span>
+    <template if="{{!player.luckyNumber && player.canHaveLuckyNumber}}">
+      Lucky number
+      <template repeat="{{garbage, i in luckyNumbers}}">
+        <button grey lucky-number="{{i + 1}}" on-tap="{{setLuckyNumber}}">{{i + 1}}</button>
+      </template>
+    </template>
+    <template if="{{player.luckyNumber}}">
+      Your lucky number is {{player.luckyNumber}}
+    </template>
+  </template>
+  <script src="millionaire-space.js"></script>
+</polymer-element

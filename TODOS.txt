@@ -1,5 +1,3 @@
-- allow entry of lucky number
-
 - use a filter for cash {{ cash | formatCash }}
 - cash change animation - color + incrementer
 - sometimes next player doesn't add borders? (maybe need an async event?)

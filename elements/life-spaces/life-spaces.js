@@ -33,6 +33,7 @@ Polymer({
       { id: 'property-taxes', label: 'Property Taxes' },
       { id: 'day-of-reckoning', label: 'Day of Reckoning' },
       { id: 'ending', label: 'Ending' },
+      { id: 'millionaire' },
       { id: 'failed' }
     ];
   },
