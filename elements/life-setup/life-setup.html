@@ -1,28 +1,29 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
-<link rel="import" href="../../bower_components/core-selector/core-selector.html">
-<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/layout/layout.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="life-setup" attributes="players started">
+<dom-module id="life-setup">
+  <link rel="import" type="css" href="life-setup.css">
   <template>
-    <link rel="stylesheet" href="life-setup.css">
-    <section id="pregame" hiding?="{{started}}" layout horizontal center>
-      <div layout vertical>
+    <section id="pregame" hiding?="{{started}}" class="layout horizontal center">
+      <div class="layout vertical">
         <input type="text" value="{{name}}" placeholder="Enter player name" />
-        <core-selector layout horizontal id="swatches" valueattr="player-color" on-core-select="{{swatchChanged}}">
-          <template repeat="{{color in colorChoices}}">
-            <core-item swatch player-color="{{color}}"></core-item>
+        <iron-selector class="layout horizontal" id="swatches" attr-for-selected="player-color" on-iron-select="swatchChanged">
+          <template is="dom-repeat" items="{{colorChoices}}">
+            <div swatch player-color$="{{item.color}}"></div>
           </template>
-        </core-selector>
-        <core-selector layout horizontal id="cars" valueattr="player-car">
-          <template repeat="{{car in carChoices}}">
-            <core-icon-button icon="car-icons:{{car}}" player-car="{{car}}"></core-icon-button>
+        </iron-selector>
+        <iron-selector class="layout horizontal" id="cars" attr-for-selected="player-car">
+          <template is="dom-repeat" items="{{carChoices}}">
+            <paper-icon-button icon="{{item.icon}}" player-car$="{{item.type}}" noink></paper-icon-button>
           </template>
-        </core-selector>
+        </iron-selector>
       </div>
       <button add-player grey on-tap="{{addPlayer}}">Add player</button>
       <button start-game green on-tap="{{startGame}}" disabled?="{{!players.length}}">Start Game</button>
     </section>
   </template>
-  <script src="life-setup.js"></script>
-</polymer-element>
+</dom-module>
+<script src="life-setup.js"></script>

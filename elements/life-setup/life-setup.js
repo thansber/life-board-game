@@ -1,5 +1,22 @@
 Polymer({
 
+  is: 'life-setup',
+
+  properties: {
+    players: {
+      type: Array,
+      value: function() { return []; },
+      notify: true,
+      observer: 'playersChanged'
+    },
+    started: {
+      type: Boolean,
+      value: false,
+      notify: true,
+      observer: 'startedChanged'
+    }
+  },
+
   addPlayer: function() {
     var swatch = this.$.swatches.selectedItem,
         car = this.$.cars.selected,
@@ -14,11 +31,6 @@ Polymer({
 
     this.players.push(this.createPlayer(this.name, this.$.swatches.selected, car));
     this.$.swatches.selected = '';
-  },
-
-  created: function() {
-    this.players = [];
-    this.started = false;
   },
 
   createPlayer: function(name, color, car) {
@@ -47,6 +59,9 @@ Polymer({
 
   playersChanged: function(changes) {
     var removedColor;
+    if (!changes.length || !changes[0]) {
+      return;
+    }
     if (changes[0].removed.length) {
       removedColor = changes[0].removed[0].color;
       this.$.swatches.querySelector('[player-color="' + removedColor + '"]').removeAttribute('disabled');
@@ -54,8 +69,23 @@ Polymer({
   },
 
   ready: function() {
-    this.carChoices = ['car', 'classic-car', 'antique-car', 'suv', 'van', 'truck'];
-    this.colorChoices = ['red', 'pink', 'orange', 'green', 'blue', 'cyan', 'white'];
+    this.carChoices = [
+      { type: 'car', icon: 'car-icons:car' },
+      { type: 'classic-car', icon: 'car-icons:classic-car' },
+      { type: 'antique-car', icon: 'car-icons:antique-car' },
+      { type: 'suv', icon: 'car-icons:suv' },
+      { type: 'van', icon: 'car-icons:van' },
+      { type: 'truck', icon: 'car-icons:truck' }
+    ];
+    this.colorChoices = [
+      { color: 'red' },
+      { color: 'pink' },
+      { color: 'orange' },
+      { color: 'green' },
+      { color: 'blue' },
+      { color: 'cyan' },
+      { color: 'white' }
+    ];
 
     //this.setupFakeData();
   },
@@ -81,6 +111,6 @@ Polymer({
   },
 
   swatchChanged: function(inEvent, inDetail, inSender) {
-    this.$.cars.setAttribute('color', inDetail.item.getAttribute('player-color'));
+    Polymer.dom(this.$.cars).setAttribute('color', inDetail.item.getAttribute('player-color'));
   }
 });

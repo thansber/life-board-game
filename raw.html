@@ -6,23 +6,20 @@
   <link rel="import" href="bower_components/polymer/polymer.html">
   <link rel="import" href="elements/life-car-icons/life-car-icons.html">
   <link rel="import" href="elements/life-setup/life-setup.html">
-  <link rel="import" href="elements/life-menu/life-menu.html">
-  <link rel="import" href="elements/life-game/life-game.html">
-  <link href="main.css" rel="stylesheet" shim-shadowdom>
+  <!-- <link rel="import" href="elements/life-menu/life-menu.html">
+  <link rel="import" href="elements/life-game/life-game.html"> -->
+  <link rel="import" href="main.css">
 </head>
 
 <body>
-<template is="auto-binding" id="root-template">
+<template is="dom-bind" id="root-template">
   <life-car-icons></life-car-icons>
   <life-setup layout vertical players="{{players}}" started="{{started}}"></life-setup>
+  <!--
   <life-menu layout horizontal flex center-center started="{{started}}"></life-menu>
   <life-game vertical layout players="{{players}}" started="{{started}}"></life-game>
+  -->
 </template>
 
-<script>
-document.addEventListener('polymer-ready', function() {
-  var t = document.querySelector('#root-template');
-});
-</script>
 </body>
 </html>

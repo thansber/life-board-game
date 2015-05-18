@@ -46,7 +46,7 @@
   opacity: 0.5;
 }
 
-:host [swatch][active] {
+:host [swatch].iron-selected {
   box-shadow: 0 0 12px rgb(255, 255, 255);
   opacity: 1;
 }
@@ -58,7 +58,7 @@
   opacity: 0.2;
 }
 
-:host::shadow button {
+:host button {
   font-size: 1.5em;
   margin: 0 0 0 1em;
   padding: 0.5em;
@@ -71,6 +71,7 @@
 :host [player-car] {
   color: rgb(0, 0, 0);
   height: 30px;
+  padding: 0 4px 0 0;
   width: 74px;
 }
 
@@ -80,14 +81,19 @@
   box-shadow: none;
 }
 
-:host [player-car] /deep/ core-icon {
+:host [player-car] /deep/ iron-icon {
   width: 74px;
   height: 74px;
 }
 
-:host [player-car][active] /deep/ svg {
+:host [player-car].iron-selected /deep/ svg {
   -webkit-filter: drop-shadow(0 0 6px rgb(255, 255, 255));
   filter: drop-shadow(0 0 6px rgb(255, 255, 255));
+}
+
+:host [player-car="antique-car"] {
+  padding-left: 4px;
+  width: 60px;
 }
 
 :host [start-game][disabled] {
@@ -101,7 +107,7 @@
   width: 100%;
 }
 
-:host #during core-icon-button {
+:host #during paper-icon-button {
   height: 24px;
   margin: 0;
   padding: 0;

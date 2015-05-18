@@ -1,3 +1,4 @@
+<style is="custom-style">
 body,h1,h2,h3,h4,h5,h6,p {
   font-size: 1em;
   font-weight: normal;
@@ -39,6 +40,10 @@ body.started life-game {
 
 body.started /deep/ life-spaces {
   display: inline-block;
+}
+
+html /deep/ paper-ripple {
+  color: rgba(0,0,0,0);
 }
 
 html /deep/ [text] {
@@ -238,3 +243,4 @@ html /deep/ button[pink] {
 html /deep/ button[gold] {
   border: 2px solid rgb(166, 106, 0);
 }
+</style>
