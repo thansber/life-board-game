@@ -6,8 +6,7 @@ Polymer({
     players: {
       type: Array,
       value: function() { return []; },
-      notify: true,
-      observer: 'playersChanged'
+      notify: true
     },
     started: {
       type: Boolean,
@@ -16,6 +15,8 @@ Polymer({
       observer: 'startedChanged'
     }
   },
+
+  observers: ['playersChanged(players.splices)'],
 
   addPlayer: function() {
     var swatch = this.$.swatches.selectedItem,
@@ -27,10 +28,11 @@ Polymer({
     if (!car) {
       return;
     }
-    swatch.setAttribute('disabled', true);
+    Polymer.dom(swatch).setAttribute('disabled', true);
 
-    this.players.push(this.createPlayer(this.name, this.$.swatches.selected, car));
-    this.$.swatches.selected = '';
+    player = this.createPlayer(this.name, this.$.swatches.selected, car);
+    this.push('players', player);
+    //this.$.swatches.selected = ''; // TODO: unselect an iron-selector
   },
 
   createPlayer: function(name, color, car) {
@@ -45,6 +47,7 @@ Polymer({
       index: this.players.length,
       insurance: [],
       job: null,
+      largeCarIcon: 'car-icons-large:' + car,
       lostEverything: false,
       luckyNumber: 0,
       married: false,
@@ -58,14 +61,17 @@ Polymer({
   },
 
   playersChanged: function(changes) {
-    var removedColor;
-    if (!changes.length || !changes[0]) {
+    var $removedPlayerSwatch;
+    if (!changes || !changes.indexSplices) {
       return;
     }
-    if (changes[0].removed.length) {
-      removedColor = changes[0].removed[0].color;
-      this.$.swatches.querySelector('[player-color="' + removedColor + '"]').removeAttribute('disabled');
-    }
+
+    this.hasPlayers = this.players.length > 0;
+
+    changes.indexSplices[0].removed.forEach(function(removedPlayer) {
+      $removedPlayerSwatch = Polymer.dom(this.$.swatches).querySelector('[player-color="' + removedPlayer.color + '"]');
+      $removedPlayerSwatch.removeAttribute('disabled');
+    }, this);
   },
 
   ready: function() {
@@ -86,20 +92,22 @@ Polymer({
       { color: 'cyan' },
       { color: 'white' }
     ];
+    this.hasPlayers = false;
 
-    //this.setupFakeData();
+    this.setupFakeData();
   },
 
   setupFakeData: function() {
-    this.players.push(this.createPlayer('Madelyn', 'red', 'car'));
-    this.players.push(this.createPlayer('Todd', 'blue', 'classic-car'));
-    this.players.push(this.createPlayer('Renee', 'orange', 'antique-car'));
-    this.players.push(this.createPlayer('Will', 'green', 'suv'));
-    this.players[0].space = 'ending';
+    this.push('players', this.createPlayer('Madelyn', 'red', 'car'));
+    this.push('players', this.createPlayer('Todd', 'blue', 'classic-car'));
+    this.push('players', this.createPlayer('Renee', 'orange', 'antique-car'));
+    this.push('players', this.createPlayer('Will', 'green', 'suv'));
+    /*this.players[0].space = 'ending';
     this.players[0].cash = 543210;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
     this.players[0].insurance.push('auto', 'life', 'stock');
     this.players[1].space = 'orphanage';
+    */
   },
 
   startedChanged: function() {

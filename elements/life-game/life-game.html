@@ -1,42 +1,44 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-a11y-keys/core-a11y-keys.html">
+<link rel="import" href="../../bower_components/layout/layout.html">
+<link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
 <link rel="import" href="../../elements/life-player/life-player.html">
+<!--
 <link rel="import" href="../../elements/life-spaces/life-spaces.html">
 <link rel="import" href="../../elements/life-settings/life-settings.html">
-
-<polymer-element name="life-game" attributes="players started"
-  on-select-player="{{selectPlayer}}"
-  on-remove-player="{{removePlayer}}"
-  on-move-up="{{moveUp}}"
-  on-move-down="{{moveDown}}"
-  on-everyone-pays="{{everyonePays}}"
-  on-pay-day="{{payday}}"
-  on-toll-bridge-crossed="{{tollBridgeCrossed}}"
-  on-child-birth="{{childBirth}}"
-  on-lucky-number="{{luckyNumberSpun}}"
-  on-millionaire="{{becomeMillionaire}}"
-  on-tycoon="{{becomeTycoon}}"
-  on-failed="{{failedAtLife}}">
+-->
+<dom-module id="life-game"
+  on-move-up="moveUp"
+  on-move-down="moveDown"
+  on-everyone-pays="everyonePays"
+  on-pay-day="payday"
+  on-toll-bridge-crossed="tollBridgeCrossed"
+  on-child-birth="childBirth"
+  on-lucky-number="luckyNumberSpun"
+  on-millionaire="becomeMillionaire"
+  on-tycoon="becomeTycoon"
+  on-failed="failedAtLife">
+  <link rel="import" type="css" href="life-game.css">
   <template>
-    <link rel="stylesheet" href="life-game.css">
-    <div vertical layout id="players">
-      <template repeat="{{player, i in players}}">
+    <div class="vertical layout" id="playerList">
+      <template is="dom-repeat" items="{{players}}">
         <life-player
-          player="{{player}}"
+          player="{{item}}"
           started="{{started}}"
-          first="{{i === 0}}"
-          notFirst="{{i > 0}}"
-          notLast="{{i != players.length - 1}}"></life-player>
+          first="{{isFirst(index)}}"
+          last="{{isLast(index)}}"
+          on-select-player="selectPlayer"
+          on-remove-player="removePlayer"></life-player>
       </template>
     </div>
-
+<!--
     <life-spaces player="{{currentPlayer}}" allSpaces="{{spaces}}"></life-spaces>
     <life-settings id="settings"
       player="{{currentPlayer}}"
       revengePlayers="{{playersForRevenge}}"
       spaces="{{spaces}}"
-      hidden?="{{!started || gameOver}}"></life-settings>
-    <core-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
+      hidden$="{{!started || gameOver}}"></life-settings>
+-->
+    <iron-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="keyHandler"></iron-a11y-keys>
   </template>
-  <script src="life-game.js"></script>
-</polymer-element>
+</dom-module>
+<script src="life-game.js"></script>

@@ -13,21 +13,14 @@
   height: 72px;
 }
 
-:host [actions] /deep/ core-icon-button {
+:host [actions] /deep/ [player-action] {
   display: block;
   margin: 0;
   padding: 0em 0.5em;
 }
 
-:host [actions] /deep/ core-icon-button[first] {
+:host [actions] /deep/ [player-action][first] {
   margin-top: 24px;
-}
-
-:host [actions] /deep/ core-icon {
-  height: 24px;
-  margin: 0;
-  padding: 0;
-  width: 24px;
 }
 
 :host #player.loser {
@@ -49,7 +42,7 @@
   color: rgb(223, 51, 54);
 }
 
-:host [car] /deep/ core-icon {
+:host [car] /deep/ [player-car] {
   height: 72px;
   width: 184px;
 }

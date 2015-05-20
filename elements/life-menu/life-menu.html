@@ -1,18 +1,26 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="life-menu" attributes="started">
+<dom-module id="life-menu">
+  <link rel="stylesheet" href="life-menu.css">
   <template>
-    <link rel="stylesheet" href="life-menu.css">
-    <section id="during" hiding?="{{!started}}" on-tap="{{pauseGame}}">
-      <core-icon-button icon="hardware:keyboard-arrow-down" title="I need to make changes"></core-icon-button>
+    <section id="during" hiding$="{{!started}}" on-tap="pauseGame">
+      <paper-icon-button icon="hardware:keyboard-arrow-down" title="I need to make changes"></paper-icon-button>
     </section>
   </template>
-  <script>
-    Polymer({
-      pauseGame: function() {
-        this.started = false;
-      }
-    });
-  </script>
 </polymer-element>
+<script>
+  Polymer({
+    is: 'life-menu',
+    properties: {
+      started: {
+        type: Boolean,
+        value: false,
+        notify: true
+      }
+    },
+    pauseGame: function() {
+      this.started = false;
+    }
+  });
+</script>

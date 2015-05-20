@@ -1,5 +1,17 @@
 Polymer({
 
+  is: 'life-player',
+
+  properties: {
+    player: Object,
+    started: Boolean,
+  },
+
+  hostAttributes: {
+    first: false,
+    last: false,
+  },
+
   animateCashChange: function(oldCash, newCash) {
     var increment = Math.abs(oldCash - newCash) / 10;
     this.animator = setInterval(function() {
@@ -45,17 +57,16 @@ Polymer({
     while (this.cashFormatter.test(formattedCash)) {
       formattedCash = formattedCash.replace(this.cashFormatter, '$1' + ',' + '$2');
     }
-    return formattedCash;
+    return '$' + formattedCash;
   },
 
   observe: {
     'player.cash': 'cashChanged'
   },
 
-  playerAction: function(event, details, sender) {
-    var action = event.target.getAttribute('player-action'),
-        index = +sender.getAttribute('player-index');
-    this.fire(action ? action : 'select-player', { index: index });
+  playerAction: function(event) {
+    var action = Polymer.dom(event).localTarget.getAttribute('player-action');
+    this.fire(action ? action : 'select-player', { index: this.player.index });
   }
 
 });

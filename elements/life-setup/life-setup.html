@@ -9,7 +9,7 @@
   <template>
     <section id="pregame" hiding?="{{started}}" class="layout horizontal center">
       <div class="layout vertical">
-        <input type="text" value="{{name}}" placeholder="Enter player name" />
+        <input type="text" value="{{name::input}}" placeholder="Enter player name" />
         <iron-selector class="layout horizontal" id="swatches" attr-for-selected="player-color" on-iron-select="swatchChanged">
           <template is="dom-repeat" items="{{colorChoices}}">
             <div swatch player-color$="{{item.color}}"></div>
@@ -21,8 +21,8 @@
           </template>
         </iron-selector>
       </div>
-      <button add-player grey on-tap="{{addPlayer}}">Add player</button>
-      <button start-game green on-tap="{{startGame}}" disabled?="{{!players.length}}">Start Game</button>
+      <button add-player grey on-tap="addPlayer">Add player</button>
+      <button start-game green on-tap="startGame" disabled$="{{!hasPlayers}}">Start Game</button>
     </section>
   </template>
 </dom-module>

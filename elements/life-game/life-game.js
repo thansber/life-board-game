@@ -1,7 +1,47 @@
 Polymer({
 
+  is: 'life-game',
+
+  hostAttributes: {
+    tabindex: 0
+  },
+
+  observers: [
+    'cashChanged(currentPlayer.cash)',
+    'insuranceChanged(currentPlayer.insurance)',
+    'tollBridgeChanged(currentPlayer.crossedTollBridge)',
+    'tollBridgeChanged(currentPlayer.ownsTollBridge)'
+  ],
+
+  properties: {
+    currentPlayer: {
+      type: Object,
+      value: function() {
+        return {
+          insurance: []
+        };
+      },
+    },
+    players: {
+      type: Array,
+      value: function() { return []; },
+      notify: true
+    },
+    playersForRevenge: {
+      type: Array,
+      value: function() { return []; },
+      notify: true
+    },
+    started: {
+      type: Boolean,
+      value: false,
+      notify: true,
+      observer: 'startedChanged'
+    }
+  },
+
   allPlayers: function() {
-    return this.$.players.querySelectorAll('[player]');
+    return Polymer.dom(this.$.playerList).querySelectorAll('life-player');
   },
 
   becomeMillionaire: function(event, detail, sender) {
@@ -32,7 +72,7 @@ Polymer({
     this.gameOver = true;
   },
 
-  cashChanged: function(oldValue, newValue) {
+  cashChanged: function() {
     this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
     });
@@ -42,14 +82,8 @@ Polymer({
     this.everyonePays.apply(this, arguments);
   },
 
-  created: function() {
-    this.currentPlayer = null;
-    this.players = [];
-    this.playersForRevenge = [];
-  },
-
   currentlySelectedPlayer: function() {
-    return this.$.players.querySelector('[player][active]');
+    return Polymer.dom(this.$.playerList).querySelector('life-player[active]');
   },
 
   everyonePays: function(event, detail, sender) {
@@ -70,6 +104,14 @@ Polymer({
     this.currentPlayer.insurance.forEach(function(insuranceType) {
       this.currentPlayer.hasInsurance[insuranceType] = true;
     }, this);
+  },
+
+  isFirst: function(index) {
+    return index === 0;
+  },
+
+  isLast: function(index) {
+    return index === this.players.length - 1
   },
 
   keyHandler: function(ev) {
@@ -135,15 +177,8 @@ Polymer({
     this.selectPlayer({}, { index: nextIndex });
   },
 
-  observe: {
-    'currentPlayer.cash': 'cashChanged',
-    'currentPlayer.crossedTollBridge': 'tollBridgeChanged',
-    'currentPlayer.insurance': 'insuranceChanged',
-    'currentPlayer.ownsTollBridge': 'tollBridgeChanged'
-  },
-
   otherPlayers: function(notThisPlayer) {
-    return this.players.filter(function(player) {
+    return (this.players || []).filter(function(player) {
       return player.index !== notThisPlayer.index;
     });
   },
@@ -164,12 +199,8 @@ Polymer({
     return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
   },
 
-  ready: function() {
-    this.tabIndex = 0;
-  },
-
   removePlayer: function(event, detail, sender) {
-    this.players.splice(detail.index, 1);
+    this.splice('players', detail.index, 1);
     this.players.forEach(function(player, i) {
       player.index = i;
     });
@@ -183,7 +214,7 @@ Polymer({
     }
 
     this.unselectPlayer(this.currentlySelectedPlayer());
-    this.allPlayers().item(index).setAttribute('active', '');
+    this.allPlayers()[index].setAttribute('active', '');
     this.currentPlayer = this.players[index];
   },
 
@@ -221,9 +252,8 @@ Polymer({
 
   unselectPlayer: function(playerElem) {
     if (playerElem) {
-      playerElem.removeAttribute('active');
+      Polymer.dom(playerElem).removeAttribute('active');
     }
   }
-
 
 });

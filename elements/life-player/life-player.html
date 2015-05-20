@@ -1,30 +1,32 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
-<link rel="import" href="../../bower_components/core-icon/core-icon.html">
-<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/layout/layout.html">
+<link rel="import" href="../../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
-<polymer-element name="life-player" attributes="player started first notFirst notLast">
+<dom-module id="life-player">
+  <link rel="import" type="css" href="life-player.css">
   <template>
-    <link rel="stylesheet" href="life-player.css">
-    <div horizontal layout center id="player" player-index="{{player.index}}"
+    <div class="horizontal layout center" id="player"
       class="{{ {loser: player.lostEverything} | tokenList }}"
-      on-tap="{{playerAction}}">
-      <div verical layout center actions hidden?="{{started}}">
-        <template if="{{notFirst}}">
-          <core-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></core-icon-button>
+      on-tap="playerAction">
+      <div class="verical layout center" actions hidden$="{{started}}">
+        <template is="dom-if" if="{{!first}}">
+          <paper-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></paper-icon-button>
         </template>
-        <core-icon-button first?="{{first}}" icon="highlight-remove" player-action="remove-player"></core-icon-button>
-        <template if="{{notLast}}">
-          <core-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></core-icon-button>
+        <paper-icon-button first$="{{first}}" icon="highlight-remove" player-action="remove-player"></paper-icon-button>
+        <template is="dom-if" if="{{!last}}">
+          <paper-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></paper-icon-button>
         </template>
       </div>
-      <div id="cash" cash hidden?="{{!started}}">${{player.cash | formatCash}}</div>
-      <div id="changingCash" cash hidden>${{player.cashChange | formatCash}}</div>
-      <div car color="{{player.color}}">
-        <core-icon icon="car-icons-large:{{player.car}}" player-car></core-icon>
+      <div id="cash" cash hidden$="{{!started}}">{{formatCash(player.cash)}}</div>
+      <div id="changingCash" cash hidden>{{formatCash(player.cashChange)}}</div>
+      <div car color$="{{player.color}}">
+        <iron-icon icon="{{player.largeCarIcon}}" player-car></iron-icon>
       </div>
       <div name>{{player.name}}</div>
     </div>
   </template>
-  <script src="life-player.js"></script>
-</polymer-element>
+</dom-module>
+<script src="life-player.js"></script>
