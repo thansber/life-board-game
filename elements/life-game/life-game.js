@@ -106,14 +106,6 @@ Polymer({
     }, this);
   },
 
-  isFirst: function(index) {
-    return index === 0;
-  },
-
-  isLast: function(index) {
-    return index === this.players.length - 1
-  },
-
   keyHandler: function(ev) {
     if (this.gameOver) {
       return;
@@ -144,22 +136,11 @@ Polymer({
     detail.player.cash -= detail.amount;
   },
 
-  moveDown: function(event, detail, sender) {
+  movePlayer: function(event, detail) {
     var i = detail.index,
-        playerMoving = this.players[i];
-    this.players[i].index++;
-    this.players[i + 1].index--;
-    this.players[i] = this.players[i + 1];
-    this.players[i + 1] = playerMoving;
-  },
-
-  moveUp: function(event, detail, sender) {
-    var i = detail.index,
-        playerMoving = this.players[i];
-    this.players[i].index--;
-    this.players[i - 1].index++;
-    this.players[i] = this.players[i - 1];
-    this.players[i - 1] = playerMoving;
+        playerMoving = this.splice('players', i, 1);
+    this.splice('players', i + detail.direction, 0, playerMoving[0]);
+    this.resetIndexes();
   },
 
   nextPlayer: function() {
@@ -201,9 +182,14 @@ Polymer({
 
   removePlayer: function(event, detail, sender) {
     this.splice('players', detail.index, 1);
-    this.players.forEach(function(player, i) {
-      player.index = i;
-    });
+    this.resetIndexes();
+  },
+
+  resetIndexes: function() {
+    this.players.forEach(function(player, i, a) {
+      this.set('players.' + i + '.index', i);
+    }, this);
+    this.set('players.length', this.players.length);
   },
 
   selectPlayer: function(event, detail, sender) {

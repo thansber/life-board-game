@@ -3,13 +3,16 @@ Polymer({
   is: 'life-player',
 
   properties: {
-    player: Object,
-    started: Boolean,
+    player: {
+      type: Object,
+      value: function() { return {}; },
+      notify: true
+    },
+    started: Boolean
   },
 
   hostAttributes: {
-    first: false,
-    last: false,
+    numPlayers: 0
   },
 
   animateCashChange: function(oldCash, newCash) {
@@ -60,13 +63,26 @@ Polymer({
     return '$' + formattedCash;
   },
 
+  isFirst: function(index) {
+    return index === 0;
+  },
+
+  isLast: function(index, numPlayers) {
+    return index === numPlayers - 1;
+  },
+
   observe: {
     'player.cash': 'cashChanged'
   },
 
   playerAction: function(event) {
-    var action = Polymer.dom(event).localTarget.getAttribute('player-action');
-    this.fire(action ? action : 'select-player', { index: this.player.index });
+    var target = Polymer.dom(event).localTarget,
+        action = target.getAttribute('player-action'),
+        direction = target.getAttribute('direction');
+    this.fire(action ? action : 'select-player', {
+      index: this.player.index,
+      direction: +direction
+    });
   }
 
 });

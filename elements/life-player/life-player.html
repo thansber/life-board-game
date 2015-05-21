@@ -12,13 +12,23 @@
       class="{{ {loser: player.lostEverything} | tokenList }}"
       on-tap="playerAction">
       <div class="verical layout center" actions hidden$="{{started}}">
-        <template is="dom-if" if="{{!first}}">
-          <paper-icon-button icon="hardware:keyboard-arrow-up" player-action="move-up"></paper-icon-button>
-        </template>
-        <paper-icon-button first$="{{first}}" icon="highlight-remove" player-action="remove-player"></paper-icon-button>
-        <template is="dom-if" if="{{!last}}">
-          <paper-icon-button icon="hardware:keyboard-arrow-down" player-action="move-down"></paper-icon-button>
-        </template>
+        <paper-icon-button
+          icon="hardware:keyboard-arrow-up"
+          player-action="move-player"
+          direction="-1"
+          hidden$="{{isFirst(playerIndex)}}"
+          title="Move this player up"></paper-icon-button>
+        <paper-icon-button
+          icon="highlight-remove"
+          player-action="remove-player"
+          first$="{{isFirst(playerIndex)}}"
+          title="Remove this player"></paper-icon-button>
+        <paper-icon-button
+          icon="hardware:keyboard-arrow-down"
+          player-action="move-player"
+          direction="1"
+          hidden$="{{isLast(playerIndex, numPlayers)}}"
+          title="Move this player down"></paper-icon-button>
       </div>
       <div id="cash" cash hidden$="{{!started}}">{{formatCash(player.cash)}}</div>
       <div id="changingCash" cash hidden>{{formatCash(player.cashChange)}}</div>

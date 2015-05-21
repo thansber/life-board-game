@@ -7,8 +7,6 @@
 <link rel="import" href="../../elements/life-settings/life-settings.html">
 -->
 <dom-module id="life-game"
-  on-move-up="moveUp"
-  on-move-down="moveDown"
   on-everyone-pays="everyonePays"
   on-pay-day="payday"
   on-toll-bridge-crossed="tollBridgeCrossed"
@@ -21,13 +19,10 @@
   <template>
     <div class="vertical layout" id="playerList">
       <template is="dom-repeat" items="{{players}}">
-        <life-player
-          player="{{item}}"
-          started="{{started}}"
-          first="{{isFirst(index)}}"
-          last="{{isLast(index)}}"
-          on-select-player="selectPlayer"
-          on-remove-player="removePlayer"></life-player>
+        <life-player player="{{item}}" started="{{started}}" player-index="{{index}}" num-players="{{players.length}}"
+          on-move-player="movePlayer"
+          on-remove-player="removePlayer"
+          on-select-player="selectPlayer"></life-player>
       </template>
     </div>
 <!--

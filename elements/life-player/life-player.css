@@ -11,6 +11,7 @@
 
 :host [actions] {
   height: 72px;
+  margin-top: -10px;
 }
 
 :host [actions] /deep/ [player-action] {

@@ -68,6 +68,12 @@ Polymer({
 
     this.hasPlayers = this.players.length > 0;
 
+    if (changes.indexSplices[0].addedCount) {
+      this.players.slice(0, this.players.length - 1).forEach(function(player, i) {
+        this.set('players.' + i + '.last', false);
+      }, this);
+    }
+
     changes.indexSplices[0].removed.forEach(function(removedPlayer) {
       $removedPlayerSwatch = Polymer.dom(this.$.swatches).querySelector('[player-color="' + removedPlayer.color + '"]');
       $removedPlayerSwatch.removeAttribute('disabled');
