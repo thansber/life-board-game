@@ -35,7 +35,7 @@ body.started life-setup {
 }
 
 body.started life-game {
-  top: 3em;
+  top: -5em;
 }
 
 body.started /deep/ life-spaces {

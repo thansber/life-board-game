@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-:host #during core-icon-button {
+:host #during paper-icon-button {
   height: 24px;
   margin: 0;
   padding: 0;
