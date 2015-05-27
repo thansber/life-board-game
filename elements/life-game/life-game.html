@@ -4,8 +4,9 @@
 <link rel="import" href="../../elements/life-player/life-player.html">
 <!--
 <link rel="import" href="../../elements/life-spaces/life-spaces.html">
-<link rel="import" href="../../elements/life-settings/life-settings.html">
 -->
+<link rel="import" href="../../elements/life-settings/life-settings.html">
+
 <dom-module id="life-game"
   on-everyone-pays="everyonePays"
   on-pay-day="payday"
@@ -27,12 +28,12 @@
     </div>
 <!--
     <life-spaces player="{{currentPlayer}}" allSpaces="{{spaces}}"></life-spaces>
+-->
     <life-settings id="settings"
       player="{{currentPlayer}}"
       revengePlayers="{{playersForRevenge}}"
       spaces="{{spaces}}"
-      hidden$="{{!started || gameOver}}"></life-settings>
--->
+      hidden$="{{hideSettings(started, gameOver)}}"></life-settings>
     <iron-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="keyHandler"></iron-a11y-keys>
   </template>
 </dom-module>

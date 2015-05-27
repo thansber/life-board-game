@@ -1,81 +1,86 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-icon/core-icon.html">
-<link rel="import" href="../../bower_components/core-selector/core-selector.html">
+<link rel="import" href="../../bower_components/layout/layout.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="life-setting-adjuster.html">
 
-<polymer-element name="life-settings" attributes="player revengePlayers spaces">
+<dom-module id="life-settings">
+  <link rel="stylesheet" href="life-settings.css">
   <template>
-    <link rel="stylesheet" href="life-settings.css">
-    <core-selector valueattr="id" id="settingSelector" horizontal layout
-      on-core-select="{{settingChanged}}">
-      <section id="adjuster" flex>Cash Adjuster</section>
-      <section id="payday" flex><button red on-tap="{{payday}}">PAY DAY!</button></section>
-      <section id="children" flex>Children</section>
-      <section id="revenge" flex>Revenge</section>
-      <section id="stock-market" flex>Stock Market</section>
-      <section id="lucky-number" flex>Lucky Number</section>
-      <section id="toll-bridge" flex>Toll Bridge</section>
-      <section id="all"><core-icon icon="menu" alt="All Spaces"></core-icon></section>
-    </core-selector>
+    <iron-selector id="settingSelector" attr-for-selected="setting" selected-class="selected-setting" class="horizontal layout"
+      on-iron-select="showSetting">
+      <section setting="adjuster" class="flex">Cash Adjuster</section>
+      <section setting="payday" class="flex"><button red on-tap="payday">PAY DAY!</button></section>
+      <section setting="children" class="flex">Children</section>
+      <section setting="revenge" class="flex">Revenge</section>
+      <section setting="stock-market" class="flex">Stock Market</section>
+      <section setting="lucky-number" class="flex">Lucky Number</section>
+      <section setting="toll-bridge" class="flex">Toll Bridge</section>
+      <section setting="all"><iron-icon icon="menu" alt="All Spaces"></iron-icon></section>
+    </iron-selector>
 
-    <div detail id="adjuster-detail" horizontal layout center center-justified>
-      <button green add adjuster multiplier="1" on-tap="{{adjustCash}}">+</button>
-      <input id="adjust-value" type="text" maxlength="3" on-focus="{{highlight}}" />
-      <button red minus adjuster multiplier="-1" on-tap="{{adjustCash}}">-</button>
-      <label for="adjust-value">(x1000)</label>
-    </div>
+    <iron-selector id="settingDetail" attr-for-selected="setting-detail" selected-class="selected-setting">
+      <life-setting-adjuster
+        setting-detail="adjuster"
+        player="{{player}}"
+        class="horizontal layout center center-justified"></life-setting-adjuster>
+    <!--
+      <div detail id="children-detail" setting="children" class="horizontal layout center center-justified">
+        <button light-blue on-tap="sonIsBorn">A son is born!</button>
+        <button pink on-tap="daughterIsBorn">A daughter is born!</button>
+      </div>
 
-    <div detail id="children-detail" horizontal layout center center-justified>
-      <button light-blue on-tap="{{sonIsBorn}}">A son is born!</button>
-      <button pink on-tap="{{daughterIsBorn}}">A daughter is born!</button>
-    </div>
+      <div detail id="revenge-detail" setting="revenge" class="horizontal layout center center-justified">
+        <div id="getRevenge" hidden$="{{!revengePlayers.length}}">
+          <button gold on-tap="getRevenge" amount="200000">Get revenge on</button>
+          <select id="revenge-whom">
+          <template is="dom-repeat" items="{{revengePlayers}}">
+            <option value="{{item.index}}">{{item.name}}</option>
+          </template>
+          </select>
+          <span>or send them back 10 spaces</span>
+        </div>
+        <div id="noRevenge" hidden$="{{revengePlayers.length}}">
+          No player has enough cash, send someone back 10 spaces instead
+        </div>
+      </div>
 
-    <div detail id="revenge-detail" horizontal layout center center-justified>
-      <template if="{{revengePlayers.length}}">
-        <button gold on-tap="{{getRevenge}}" amount="200000">Get revenge on</button>
-        <select id="revenge-whom">
-        <template repeat="{{p in revengePlayers}}">
-          <option value="{{p.index}}">{{p.name}}</option>
+      <div detail id="stock-market-detail" setting="stock-market" class="horizontal layout center center-justified">
+        <div id="hasStockInsurance" hidden$="{{!player.hasInsurance.stock}}">
+          I played the stock market and spun a
+          <button red on-tap="transaction" amount="-60000">1, 2, or 3</button>
+          <button grey>4, 5, or 6</button>
+          <button green on-tap="transaction" amount="120000">7, 8, 9, or 10</button>
+        </div>
+        <div id="noStockInsurance" hidden$="{{player.hasInsurance.stock}}">
+          You need stock insurance to play the stock market
+        </div>
+      </div>
+
+      <div detail id="lucky-number-detail" setting="lucky-number" class="horizontal layout center center-justified">
+        <button red on-tap="luckyNumber" amount="24000">I spun the lucky number</button>
+      </div>
+
+      <div detail id="toll-bridge-detail" setting="toll-bridge" class="horizontal layout center center-justified">
+        <div id="tollBridgeOwner" hidden$="{{!player.ownsTollBridge}}">
+          <button grey on-tap="tollBridgeLost">I no longer own the toll bridge</button>
+        </div>
+        <div id="notTollBridgeOwner" hidden=$"{{player.ownsTollBridge}}">
+          I do not own the toll bridge
+        </div>
+      </div>
+
+      <div detail id="all-detail" setting="all" class="horizontal layout center center-justified wrap">
+        <template is="dom-repeat=" items="{{spaces}}">
+          <template if="{{item.label}}">
+            <button grey on-tap="setSpace" space="{{item.id}}">{{item.label}}</button>
+          </template>
         </template>
-        </select>
-        <span>or send them back 10 spaces</span>
-      </template>
-      <template if="{{!revengePlayers.length}}">
-        No player has enough cash, send someone back 10 spaces instead
-      </template>
-    </div>
+      </div>
+          -->
 
-    <div detail id="stock-market-detail" horizontal layout center center-justified>
-      <template if="{{player.hasInsurance.stock}}">
-        I played the stock market and spun a
-        <button red on-tap="{{transaction}}" amount="-60000">1, 2, or 3</button>
-        <button grey>4, 5, or 6</button>
-        <button green on-tap="{{transaction}}" amount="120000">7, 8, 9, or 10</button>
-      </template>
-      <template if="{{!player.hasInsurance.stock}}">
-        You need stock insurance to play the stock market
-      </template>
-    </div>
-
-    <div detail id="lucky-number-detail" horizontal layout center center-justified>
-      <button red on-tap="{{luckyNumber}}" amount="24000">I spun the lucky number</button>
-    </div>
-
-    <div detail id="toll-bridge-detail" horizontal layout center center-justified>
-      <template if="{{player.ownsTollBridge}}">
-        <button grey on-tap="{{tollBridgeLost}}">I no longer own the toll bridge</button>
-      </template>
-      <template if="{{!player.ownsTollBridge}}">
-        I do not own the toll bridge
-      </template>
-    </div>
-
-    <div detail id="all-detail" horizontal layout center center-justified wrap>
-      <template repeat="{{space in spaces}}">
-        <template if="{{space.label}}">
-          <button grey on-tap="{{setSpace}}" space="{{space.id}}">{{space.label}}</button>
-        </template>
-      </template>
-    </div>
+    </iron-selector>
   </template>
-  <script src="life-settings.js"></script>
-</polymer-element>
+</dom-module>
+<script src="life-settings.js"></script>
+

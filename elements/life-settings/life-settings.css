@@ -9,15 +9,15 @@ section:hover {
   color: rgb(46, 160, 221);
 }
 
-section[active] {
+section[setting].selected-setting {
   background-color: rgb(85, 85, 85);
 }
 
-section#all {
+section[setting="all"] {
   padding: 0.5em;
 }
 
-[detail] {
+[setting-detail] {
   background-color: rgb(85, 85, 85);
   bottom: -8em;
   height: 2em;
@@ -29,11 +29,11 @@ section#all {
   width: 100%;
 }
 
-[detail].selected {
+[setting-detail].selected-setting {
   bottom: 2em;
 }
 
-[detail] button {
+life-setting /deep/ button {
   margin-left: 1em;
   padding-left: 1em;
   padding-right: 1em;
@@ -59,33 +59,4 @@ section#all {
   margin-left: 1em;
   margin-right: 1em;
   margin-top: 2px;
-}
-
-button[adjuster] {
-  font-size: 2em;
-  margin-left: 0;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-}
-
-button[add][adjuster] {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: 0;
-}
-
-button[minus][adjuster] {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left: 0;
-}
-
-#adjust-value {
-  font-size: 2em;
-  text-align: center;
-  width: 2.5em;
-}
-
-label[for="adjust-value"] {
-  margin-left: 1em;
 }

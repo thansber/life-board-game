@@ -21,6 +21,12 @@ Polymer({
           insurance: []
         };
       },
+      notify: true
+    },
+    gameOver: {
+      type: Boolean,
+      value: false,
+      notify: true
     },
     players: {
       type: Array,
@@ -32,6 +38,8 @@ Polymer({
       value: function() { return []; },
       notify: true
     },
+    // TODO: remove this
+    spaces: { type: Array, value: function() { return []; } },
     started: {
       type: Boolean,
       value: false,
@@ -98,6 +106,10 @@ Polymer({
     detail.player.lostEverything = true;
     detail.player.space = 'failed';
     detail.player.cash = 0;
+  },
+
+  hideSettings: function(started, gameOver) {
+    return !started || gameOver;
   },
 
   insuranceChanged: function(changes) {
@@ -207,7 +219,7 @@ Polymer({
   startedChanged: function() {
     if (this.started) {
       this.focus();
-      this.fire('select-player', { index: 0 });
+      this.selectPlayer({}, { index: 0 });
     }
   },
 

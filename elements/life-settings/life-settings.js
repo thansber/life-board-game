@@ -1,15 +1,21 @@
 Polymer({
 
-  adjustCash: function(event, detail, sender) {
-    var adjustValue = this.$['adjust-value'],
-        amountChanged = +sender.getAttribute('multiplier') * +adjustValue.value * 1000;
-    if (isNaN(amountChanged)) {
-      adjustValue.value = '';
-      adjustValue.focus();
-      return;
+  is: 'life-settings',
+
+  properties: {
+    player: {
+      type: Object,
+      value: function() { return {}; },
+      notify: true
+    },
+    revengePlayers: {
+      type: Array,
+      value: function() { return []; }
+    },
+    spaces: {
+      type: Array,
+      value: function() { return []; }
     }
-    adjustValue.focus();
-    this.player.cash += amountChanged;
   },
 
   childBorn: function() {
@@ -17,16 +23,11 @@ Polymer({
   },
 
   closeSettings: function() {
-    var previousSetting = this.shadowRoot.querySelector('.selected');
+    var previousSetting = Polymer.dom(this.root).querySelector('[detail].selected');
     if (previousSetting) {
       previousSetting.classList.toggle('selected');
       this.$.settingSelector.selected = null;
     }
-  },
-
-  created: function() {
-    this.revengePlayers = [];
-    this.player = null;
   },
 
   daughterIsBorn: function() {
@@ -37,22 +38,20 @@ Polymer({
     this.childBorn();
   },
 
-  getRevenge: function(event, detail, sender) {
+  getRevenge: function(event, detail) {
     var revengeOnIndex = +this.$['revenge-detail'].querySelector('#revenge-whom').selectedIndex,
         amount = +sender.getAttribute('amount');
     this.player.cash += amount;
     this.revengePlayers[revengeOnIndex].cash -= amount;
   },
 
-  highlight: function(event, detail, sender) {
-    sender.select();
-  },
 
-  luckyNumber: function(event, detail, sender) {
+
+  luckyNumber: function(event, detail) {
     this.fire('lucky-number', { player: this.player, amount: +sender.getAttribute('amount') });
   },
 
-  payday: function(event, detail, sender) {
+  payday: function(event, detail) {
     this.fire('pay-day');
   },
 
@@ -60,14 +59,15 @@ Polymer({
     this.closeSettings();
   },
 
-  setSpace: function(event, detail, sender) {
+  setSpace: function(event, detail) {
     this.player.space = sender.getAttribute('space');
     this.closeSettings();
   },
 
-  settingChanged: function(event, detail, sender) {
-    var detailId = detail.item.id;
-    if (!this.$.settingSelector.selected) {
+  showSetting: function(event, detail) {
+    this.selectedSetting = detail.item.getAttribute('setting');
+    this.$.settingDetail.select(this.selectedSetting);
+    /*if (!this.$.settingSelector.selected) {
       return;
     }
     this.closeSettings();
@@ -75,7 +75,7 @@ Polymer({
     if (/payday/.test(detailId)) {
       return;
     }
-    this.$[detailId + '-detail'].classList.add('selected');
+    this.$[detailId + '-detail'].classList.add('selected');*/
   },
 
   sonIsBorn: function() {

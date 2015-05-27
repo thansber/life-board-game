@@ -15,6 +15,10 @@ Polymer({
     numPlayers: 0
   },
 
+  observers: [
+    'cashChanged(player.cash)'
+  ],
+
   animateCashChange: function(oldCash, newCash) {
     var increment = Math.abs(oldCash - newCash) / 10;
     this.animator = setInterval(function() {
