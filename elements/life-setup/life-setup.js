@@ -40,6 +40,7 @@ Polymer({
       canHaveLuckyNumber: true,
       car: car,
       cash: 10000,
+      cashChange: 10000,
       color: color,
       crossedTollBridge: false,
       daughters: 0,

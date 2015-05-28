@@ -1,19 +1,19 @@
-:host section {
+section[setting] {
   cursor: pointer;
   font-size: 0.75em;
   padding: 0.5em 0;
   text-align: center;
 }
 
-:host section:hover {
+section[setting]:hover {
   color: rgb(46, 160, 221);
 }
 
-:host section[setting].selected-setting {
+section[setting].selected-setting {
   background-color: rgb(85, 85, 85);
 }
 
-:host section[setting="all"] {
+section[setting="all"] {
   padding: 0.5em;
 }
 

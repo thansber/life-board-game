@@ -19,39 +19,41 @@ Polymer({
     'cashChanged(player.cash)'
   ],
 
-  animateCashChange: function(oldCash, newCash) {
-    var increment = Math.abs(oldCash - newCash) / 10;
+  animateCashChange: function(newCash) {
+    var multiplier = this.player.cashChange < newCash ? 1 : -1,
+        increment = Math.abs(this.player.cashChange - newCash) / 10;
+    this.animating = true;
     this.animator = setInterval(function() {
       if (this.player.cashChange === newCash) {
         clearInterval(this.animator);
         this.cashIsChanging(false);
+        this.animating = false;
         return;
       }
-      this.player.cashChange += increment * (oldCash < newCash ? 1 : -1);
+      this.set('player.cashChange', this.player.cashChange += (increment * multiplier));
     }.bind(this), 50);
   },
 
-  cashChanged: function(oldCash, newCash) {
-    if (!oldCash || !newCash) {
+  cashChanged: function(newCash) {
+    if (!this.started) {
       return;
     }
 
-    clearInterval(this.animator);
-    this.$.changingCash.classList.toggle('adding', oldCash < newCash);
-    this.$.changingCash.classList.toggle('removing', oldCash > newCash);
-    this.player.cashChange = oldCash;
+    if (this.animating) {
+      clearInterval(this.animator);
+      this.cancelAsync(this.asyncCashChange);
+      this.animating = false;
+      this.set('player.cashChange', newCash);
+    }
+    this.toggleClass('adding', this.player.cashChange < newCash);
+    this.toggleClass('removing', this.player.cashChange > newCash);
     this.cashIsChanging(true);
-    this.async('animateCashChange', [oldCash, newCash]);
+    this.asyncCashChange = this.async(this.animateCashChange.bind(this, newCash));
   },
 
   cashIsChanging: function(isChanging) {
-    if (isChanging) {
-      this.$.cash.setAttribute('hidden', '');
-      this.$.changingCash.removeAttribute('hidden');
-    } else {
-      this.$.cash.removeAttribute('hidden');
-      this.$.changingCash.setAttribute('hidden', '');
-    }
+    this.toggleAttribute('hidden', isChanging, this.$.cash);
+    this.toggleAttribute('hidden', !isChanging, this.$.changingCash);
   },
 
   created: function() {

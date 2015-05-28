@@ -80,7 +80,8 @@ Polymer({
     this.gameOver = true;
   },
 
-  cashChanged: function() {
+  cashChanged: function(newAmount) {
+    this.set('players.' + this.currentPlayer.index + '.cash', newAmount);
     this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
     });
