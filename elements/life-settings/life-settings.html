@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="life-setting-adjuster.html">
+<link rel="import" href="life-setting-children.html">
 
 <dom-module id="life-settings">
   <link rel="stylesheet" href="life-settings.css">
@@ -20,14 +21,11 @@
     </iron-selector>
 
     <iron-selector id="settingDetail" attr-for-selected="setting-detail" selected-class="selected-setting">
-      <life-setting-adjuster
-        setting-detail="adjuster"
-        player="{{player}}"
-        class="horizontal layout center center-justified"></life-setting-adjuster>
+      <life-setting-adjuster setting-detail="adjuster" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-adjuster>
+      <life-setting-children setting-detail="children" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
     <!--
       <div detail id="children-detail" setting="children" class="horizontal layout center center-justified">
-        <button light-blue on-tap="sonIsBorn">A son is born!</button>
-        <button pink on-tap="daughterIsBorn">A daughter is born!</button>
+
       </div>
 
       <div detail id="revenge-detail" setting="revenge" class="horizontal layout center center-justified">

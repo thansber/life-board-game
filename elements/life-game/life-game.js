@@ -8,6 +8,7 @@ Polymer({
 
   observers: [
     'cashChanged(currentPlayer.cash)',
+    'childBirth(currentPlayer.daughters,currentPlayer.sons)',
     'insuranceChanged(currentPlayer.insurance)',
     'tollBridgeChanged(currentPlayer.crossedTollBridge)',
     'tollBridgeChanged(currentPlayer.ownsTollBridge)'
@@ -81,26 +82,32 @@ Polymer({
   },
 
   cashChanged: function(newAmount) {
-    this.set('players.' + this.currentPlayer.index + '.cash', newAmount);
+    this.currentPlayerSet('cash', newAmount);
     this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
     });
   },
 
-  childBirth: function(event, detail, sender) {
-    this.everyonePays.apply(this, arguments);
+  childBirth: function(numDaughters, numSons) {
+    if (numDaughters || numSons) {
+      this.everyonePays(1000);
+    }
+  },
+
+  currentPlayerSet: function(field, value) {
+    this.playerSet(this.currentPlayer, field, value);
   },
 
   currentlySelectedPlayer: function() {
     return Polymer.dom(this.$.playerList).querySelector('life-player[active]');
   },
 
-  everyonePays: function(event, detail, sender) {
-    var otherPlayers = this.otherPlayers(detail.player);
+  everyonePays: function(amount) {
+    var otherPlayers = this.otherPlayers(this.currentPlayer);
     otherPlayers.forEach(function(player) {
-      player.cash -= detail.amount;
-    });
-    detail.player.cash += (detail.amount * otherPlayers.length);
+      this.playerSet(player, 'cash', player.cash - amount);
+    }, this);
+    this.currentPlayerSet('cash', this.currentPlayer.cash + (amount * otherPlayers.length));
   },
 
   failedAtLife: function(event, detail, sender) {
@@ -191,6 +198,10 @@ Polymer({
 
   playerIndex: function(playerElem) {
     return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
+  },
+
+  playerSet: function(player, field, value) {
+    this.set('players.' + player.index + '.' + field, value);
   },
 
   removePlayer: function(event, detail, sender) {

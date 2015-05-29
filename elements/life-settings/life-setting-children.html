@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="life-setting-children">
+  <template>
+    <button light-blue on-tap="sonIsBorn">A son is born!</button>
+    <button pink on-tap="daughterIsBorn">A daughter is born!</button>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'life-setting-children',
+  properties: {
+    player: Object,
+    notify: true
+  },
+  childBorn: function(childType) {
+    if (!this.player) {
+      return;
+    }
+    this.set('player.' + childType, this.player[childType] + 1);
+  },
+  daughterIsBorn: function() {
+    this.childBorn('daughters');
+  },
+  sonIsBorn: function() {
+    this.childBorn('sons');
+  }
+})
+</script>

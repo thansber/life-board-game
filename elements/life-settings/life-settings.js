@@ -12,14 +12,14 @@ Polymer({
       type: Array,
       value: function() { return []; }
     },
+    settingDetailClasses: {
+      type: String,
+      value: 'horizontal layout center center-justified'
+    },
     spaces: {
       type: Array,
       value: function() { return []; }
     }
-  },
-
-  childBorn: function() {
-    this.fire('child-birth', { player: this.player, amount: 1000 });
   },
 
   closeSettings: function() {
@@ -30,22 +30,12 @@ Polymer({
     }
   },
 
-  daughterIsBorn: function() {
-    if (!this.player) {
-      return;
-    }
-    this.player.daughters++;
-    this.childBorn();
-  },
-
   getRevenge: function(event, detail) {
     var revengeOnIndex = +this.$['revenge-detail'].querySelector('#revenge-whom').selectedIndex,
         amount = +sender.getAttribute('amount');
     this.player.cash += amount;
     this.revengePlayers[revengeOnIndex].cash -= amount;
   },
-
-
 
   luckyNumber: function(event, detail) {
     this.fire('lucky-number', { player: this.player, amount: +sender.getAttribute('amount') });
@@ -76,14 +66,6 @@ Polymer({
       return;
     }
     this.$[detailId + '-detail'].classList.add('selected');*/
-  },
-
-  sonIsBorn: function() {
-    if (!this.player) {
-      return;
-    }
-    this.player.sons++;
-    this.childBorn();
   },
 
   tollBridgeLost: function(event, detail, sender) {

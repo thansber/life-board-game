@@ -33,7 +33,7 @@ section[setting="all"] {
   bottom: 2em;
 }
 
-life-setting /deep/ button {
+[setting-detail] /deep/ button {
   margin-left: 1em;
   padding-left: 1em;
   padding-right: 1em;
