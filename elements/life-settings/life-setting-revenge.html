@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="life-setting-revenge">
+  <link rel="stylesheet" href="life-setting-revenge.css">
+  <template>
+    <div id="noRevenge" hidden$="{{hasRevengeables}}">
+      No player has enough cash, send someone back 10 spaces instead
+    </div>
+    <div id="getRevenge" hidden$="{{!hasRevengeables}}">
+      <button gold on-tap="getRevenge" amount="200000">Get revenge on</button>
+      <select id="revengeWhom">
+      <template is="dom-repeat" items="{{revengeables}}">
+        <option value="{{item.index}}">{{item.name}}</option>
+      </template>
+      </select>
+      <span>or send them back 10 spaces</span>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'life-setting-revenge',
+  properties: {
+    hasRevengeables: {
+      type: Boolean,
+      value: false
+    },
+    player: {
+      type: Object,
+      value: function() { return {}; }
+    },
+    revengeables: {
+      type: Array,
+      value: function() { return []; }
+    }
+  },
+  observers: [
+    'revengeablesChanged(revengeables.splices)'
+  ],
+
+  getRevenge: function(event) {
+    var revengeIndex = +this.$.revengeWhom.selectedIndex,
+        amount = +event.target.getAttribute('amount');
+    this.set('player.cash', this.player.cash + amount);
+    this.set('revengePlayers.' + revengeIndex + '.cash', this.revengeables[revengeIndex] - amount);
+  },
+
+  revengeablesChanged: function() {
+    this.hasRevengeables = !!this.revengeables.length;
+  }
+})
+</script>

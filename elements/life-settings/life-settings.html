@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="life-setting-adjuster.html">
 <link rel="import" href="life-setting-children.html">
+<link rel="import" href="life-setting-revenge.html">
 
 <dom-module id="life-settings">
   <link rel="stylesheet" href="life-settings.css">
@@ -23,11 +24,8 @@
     <iron-selector id="settingDetail" attr-for-selected="setting-detail" selected-class="selected-setting">
       <life-setting-adjuster setting-detail="adjuster" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-adjuster>
       <life-setting-children setting-detail="children" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
+      <life-setting-revenge setting-detail="revenge" player="[[player]]" revengeables="{{revengeables}}" class$="{{settingDetailClasses}}"></life-setting-revenge>
     <!--
-      <div detail id="children-detail" setting="children" class="horizontal layout center center-justified">
-
-      </div>
-
       <div detail id="revenge-detail" setting="revenge" class="horizontal layout center center-justified">
         <div id="getRevenge" hidden$="{{!revengePlayers.length}}">
           <button gold on-tap="getRevenge" amount="200000">Get revenge on</button>

@@ -8,9 +8,10 @@ Polymer({
       value: function() { return {}; },
       notify: true
     },
-    revengePlayers: {
+    revengeables: {
       type: Array,
-      value: function() { return []; }
+      value: function() { return []; },
+      notify: true
     },
     settingDetailClasses: {
       type: String,

@@ -10,8 +10,10 @@
 Polymer({
   is: 'life-setting-children',
   properties: {
-    player: Object,
-    notify: true
+    player: {
+      type: Object,
+      value: function() { return {}; }
+    }
   },
   childBorn: function(childType) {
     if (!this.player) {

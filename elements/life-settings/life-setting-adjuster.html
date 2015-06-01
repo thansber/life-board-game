@@ -13,8 +13,10 @@
 Polymer({
   is: 'life-setting-adjuster',
   properties: {
-    player: Object,
-    notify: true
+    player: {
+      type: Object,
+      value: function() { return {}; }
+    }
   },
   adjustCash: function(e) {
     var adjustValue = this.$['adjust-value'],

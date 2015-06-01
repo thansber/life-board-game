@@ -34,7 +34,7 @@ Polymer({
       value: function() { return []; },
       notify: true
     },
-    playersForRevenge: {
+    revengeables: {
       type: Array,
       value: function() { return []; },
       notify: true
@@ -82,10 +82,13 @@ Polymer({
   },
 
   cashChanged: function(newAmount) {
-    this.currentPlayerSet('cash', newAmount);
-    this.playersForRevenge = this.otherPlayers(this.currentPlayer).filter(function(player) {
+    var newRevengeables = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
     });
+    this.currentPlayerSet('cash', newAmount);
+    if (this.revengeables) {
+      this.splice.apply(this, ['revengeables', 0, this.revengeables.length].concat(newRevengeables));
+    }
   },
 
   childBirth: function(numDaughters, numSons) {

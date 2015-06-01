@@ -58,7 +58,6 @@ Polymer({
 
   created: function() {
     this.cashFormatter = /(\d+)(\d{3})/;
-    this.changing = false;
   },
 
   formatCash: function(cash) {
@@ -75,10 +74,6 @@ Polymer({
 
   isLast: function(index, numPlayers) {
     return index === numPlayers - 1;
-  },
-
-  observe: {
-    'player.cash': 'cashChanged'
   },
 
   playerAction: function(event) {
