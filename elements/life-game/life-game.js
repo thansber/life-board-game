@@ -7,7 +7,6 @@ Polymer({
   },
 
   observers: [
-    'childBirth(currentPlayer.daughters,currentPlayer.sons)',
     'insuranceChanged(currentPlayer.insurance)',
     'tollBridgeChanged(currentPlayer.crossedTollBridge)',
     'tollBridgeChanged(currentPlayer.ownsTollBridge)'
@@ -180,6 +179,11 @@ Polymer({
     }
 
     this.selectPlayer({}, { index: nextIndex });
+  },
+
+  onChildBirth: function(event) {
+    event.detail.player[event.detail.childType]++;
+    this.everyonePays(1000);
   },
 
   onTransaction: function(event) {

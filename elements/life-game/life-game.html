@@ -17,7 +17,7 @@
   on-failed="failedAtLife">
   <link rel="import" type="css" href="life-game.css">
   <template>
-    <div class="vertical layout" id="pregame">
+    <div class="vertical layout" id="playerList">
       <template is="dom-repeat" items="{{players}}">
         <life-player player="{{item}}" started="{{started}}" player-index="{{index}}" num-players="{{players.length}}"
           on-move-player="movePlayer"
@@ -33,7 +33,8 @@
       revengeables="{{revengeables}}"
       spaces="{{spaces}}"
       hidden$="{{hideSettings(started, gameOver)}}"
-      on-transaction="onTransaction"></life-settings>
+      on-transaction="onTransaction"
+      on-child-birth="onChildBirth"></life-settings>
     <iron-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="keyHandler"></iron-a11y-keys>
   </template>
 </dom-module>

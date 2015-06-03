@@ -19,7 +19,10 @@ Polymer({
     if (!this.player) {
       return;
     }
-    this.set('player.' + childType, this.player[childType] + 1);
+    this.fire('child-birth', {
+      player: this.player,
+      childType: childType
+    });
   },
   daughterIsBorn: function() {
     this.childBorn('daughters');
