@@ -113,9 +113,9 @@ Polymer({
     //this.players[0].space = 'ending';
     this.players[0].cash = 543210;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
-    /*this.players[0].insurance.push('auto', 'life', 'stock');
-    this.players[1].space = 'orphanage';
-    */
+    this.players[0].insurance.push('auto', 'life', 'stock');
+    //this.players[1].space = 'orphanage';
+
   },
 
   startedChanged: function() {

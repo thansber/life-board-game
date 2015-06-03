@@ -5,6 +5,7 @@
 <link rel="import" href="life-setting-adjuster.html">
 <link rel="import" href="life-setting-children.html">
 <link rel="import" href="life-setting-revenge.html">
+<link rel="import" href="life-setting-stock-market.html">
 
 <dom-module id="life-settings">
   <link rel="stylesheet" href="life-settings.css">
@@ -25,19 +26,8 @@
       <life-setting-adjuster setting-detail="adjuster" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-adjuster>
       <life-setting-children setting-detail="children" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
       <life-setting-revenge setting-detail="revenge" player="{{player}}" revengeables="{{revengeables}}" class$="{{settingDetailClasses}}"></life-setting-revenge>
+      <life-setting-stock-market setting-detail="stock-market" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
     <!--
-      <div detail id="stock-market-detail" setting="stock-market" class="horizontal layout center center-justified">
-        <div id="hasStockInsurance" hidden$="{{!player.hasInsurance.stock}}">
-          I played the stock market and spun a
-          <button red on-tap="transaction" amount="-60000">1, 2, or 3</button>
-          <button grey>4, 5, or 6</button>
-          <button green on-tap="transaction" amount="120000">7, 8, 9, or 10</button>
-        </div>
-        <div id="noStockInsurance" hidden$="{{player.hasInsurance.stock}}">
-          You need stock insurance to play the stock market
-        </div>
-      </div>
-
       <div detail id="lucky-number-detail" setting="lucky-number" class="horizontal layout center center-justified">
         <button red on-tap="luckyNumber" amount="24000">I spun the lucky number</button>
       </div>
