@@ -1,0 +1,2 @@
+- focus cash adjuster/highlight -> Polymer behavior
+- after changing players, adjuster doesn't fire immediately
