@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/transaction-behavior.html">
 
 <dom-module id="life-setting-revenge">
   <link rel="stylesheet" href="life-setting-revenge.css">
@@ -20,6 +21,7 @@
 <script>
 Polymer({
   is: 'life-setting-revenge',
+  behaviors: [TransactionBehavior],
   properties: {
     hasRevengeables: {
       type: Boolean,
@@ -39,10 +41,11 @@ Polymer({
   ],
 
   getRevenge: function(event) {
-    var revengeIndex = +this.$.revengeWhom.selectedIndex,
-        amount = +event.target.getAttribute('amount');
-    this.set('player.cash', this.player.cash + amount);
-    this.set('revengePlayers.' + revengeIndex + '.cash', this.revengeables[revengeIndex] - amount);
+    var amount = +event.target.getAttribute('amount');
+    this.transactions([
+      { player: this.player, amount: amount },
+      { player: this.revengeables[+this.$.revengeWhom.selectedIndex], amount: amount * -1 }
+    ]);
   },
 
   revengeablesChanged: function() {

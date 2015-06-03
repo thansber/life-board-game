@@ -19,7 +19,7 @@
           hidden$="{{isFirst(playerIndex)}}"
           title="Move this player up"></paper-icon-button>
         <paper-icon-button
-          icon="highlight-remove"
+          icon="remove-circle-outline"
           player-action="remove-player"
           first$="{{isFirst(playerIndex)}}"
           title="Remove this player"></paper-icon-button>
@@ -30,7 +30,7 @@
           hidden$="{{isLast(playerIndex, numPlayers)}}"
           title="Move this player down"></paper-icon-button>
       </div>
-      <div id="cash" cash hidden$="{{!started}}">{{formatCash(player.cash)}}</div>
+      <div id="cash" cash hidden>{{formatCash(player.cash)}}</div>
       <div id="changingCash" cash hidden>{{formatCash(player.cashChange)}}</div>
       <div car color$="{{player.color}}">
         <iron-icon icon="{{player.largeCarIcon}}" player-car></iron-icon>

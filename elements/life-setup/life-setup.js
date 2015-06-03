@@ -100,6 +100,7 @@ Polymer({
       { color: 'white' }
     ];
     this.hasPlayers = false;
+    this.players = [];
 
     this.setupFakeData();
   },
@@ -109,10 +110,10 @@ Polymer({
     this.push('players', this.createPlayer('Todd', 'blue', 'classic-car'));
     this.push('players', this.createPlayer('Renee', 'orange', 'antique-car'));
     this.push('players', this.createPlayer('Will', 'green', 'suv'));
-    /*this.players[0].space = 'ending';
+    //this.players[0].space = 'ending';
     this.players[0].cash = 543210;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
-    this.players[0].insurance.push('auto', 'life', 'stock');
+    /*this.players[0].insurance.push('auto', 'life', 'stock');
     this.players[1].space = 'orphanage';
     */
   },

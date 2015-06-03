@@ -8,7 +8,10 @@ Polymer({
       value: function() { return {}; },
       notify: true
     },
-    started: Boolean
+    started: {
+      type: Boolean,
+      value: false
+    }
   },
 
   hostAttributes: {
@@ -16,7 +19,8 @@ Polymer({
   },
 
   observers: [
-    'cashChanged(player.cash)'
+    'cashChanged(player.cash)',
+    'startedChanged(started)'
   ],
 
   animateCashChange: function(newCash) {
@@ -84,6 +88,9 @@ Polymer({
       index: this.player.index,
       direction: +direction
     });
-  }
+  },
 
+  startedChanged: function() {
+    this.toggleAttribute('hidden', !this.started, this.$.cash);
+  }
 });

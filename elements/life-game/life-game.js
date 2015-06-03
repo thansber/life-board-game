@@ -7,7 +7,6 @@ Polymer({
   },
 
   observers: [
-    'cashChanged(currentPlayer.cash)',
     'childBirth(currentPlayer.daughters,currentPlayer.sons)',
     'insuranceChanged(currentPlayer.insurance)',
     'tollBridgeChanged(currentPlayer.crossedTollBridge)',
@@ -81,11 +80,10 @@ Polymer({
     this.gameOver = true;
   },
 
-  cashChanged: function(newAmount) {
+  calculateRevengeables: function() {
     var newRevengeables = this.otherPlayers(this.currentPlayer).filter(function(player) {
       return player.cash >= 200000;
     });
-    this.currentPlayerSet('cash', newAmount);
     if (this.revengeables) {
       this.splice.apply(this, ['revengeables', 0, this.revengeables.length].concat(newRevengeables));
     }
@@ -97,20 +95,23 @@ Polymer({
     }
   },
 
-  currentPlayerSet: function(field, value) {
-    this.playerSet(this.currentPlayer, field, value);
-  },
-
   currentlySelectedPlayer: function() {
     return Polymer.dom(this.$.playerList).querySelector('life-player[active]');
   },
 
   everyonePays: function(amount) {
-    var otherPlayers = this.otherPlayers(this.currentPlayer);
-    otherPlayers.forEach(function(player) {
-      this.playerSet(player, 'cash', player.cash - amount);
-    }, this);
-    this.currentPlayerSet('cash', this.currentPlayer.cash + (amount * otherPlayers.length));
+    var otherPlayers = this.otherPlayers(this.currentPlayer),
+        transactions = otherPlayers.map(function(player) {
+          return {
+            player: player,
+            amount: amount * -1
+          };
+        }, this);
+    transactions.push({
+      player: this.currentPlayer,
+      amount: amount * otherPlayers.length
+    });
+    this.onTransaction({ detail: transactions });
   },
 
   failedAtLife: function(event, detail, sender) {
@@ -181,6 +182,13 @@ Polymer({
     this.selectPlayer({}, { index: nextIndex });
   },
 
+  onTransaction: function(event) {
+    event.detail.forEach(function(transaction) {
+      this.playerSet(transaction.player, 'cash', transaction.player.cash + transaction.amount);
+    }, this);
+    this.calculateRevengeables();
+  },
+
   otherPlayers: function(notThisPlayer) {
     return (this.players || []).filter(function(player) {
       return player.index !== notThisPlayer.index;
@@ -229,6 +237,7 @@ Polymer({
     this.unselectPlayer(this.currentlySelectedPlayer());
     this.allPlayers()[index].setAttribute('active', '');
     this.currentPlayer = this.players[index];
+    this.calculateRevengeables();
   },
 
   startedChanged: function() {

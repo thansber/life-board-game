@@ -8,18 +8,16 @@
 <link rel="import" href="../../elements/life-settings/life-settings.html">
 
 <dom-module id="life-game"
-  on-cash-change="cashChange"
   on-everyone-pays="everyonePays"
   on-pay-day="payday"
   on-toll-bridge-crossed="tollBridgeCrossed"
-  on-child-birth="childBirth"
   on-lucky-number="luckyNumberSpun"
   on-millionaire="becomeMillionaire"
   on-tycoon="becomeTycoon"
   on-failed="failedAtLife">
   <link rel="import" type="css" href="life-game.css">
   <template>
-    <div class="vertical layout" id="playerList">
+    <div class="vertical layout" id="pregame">
       <template is="dom-repeat" items="{{players}}">
         <life-player player="{{item}}" started="{{started}}" player-index="{{index}}" num-players="{{players.length}}"
           on-move-player="movePlayer"
@@ -34,7 +32,8 @@
       player="{{currentPlayer}}"
       revengeables="{{revengeables}}"
       spaces="{{spaces}}"
-      hidden$="{{hideSettings(started, gameOver)}}"></life-settings>
+      hidden$="{{hideSettings(started, gameOver)}}"
+      on-transaction="onTransaction"></life-settings>
     <iron-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="keyHandler"></iron-a11y-keys>
   </template>
 </dom-module>

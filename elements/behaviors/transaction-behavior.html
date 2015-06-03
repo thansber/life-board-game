@@ -1,0 +1,14 @@
+<script>
+TransactionBehavior = {
+  transaction: function(player, amount) {
+    this.transactions([{
+      player: player,
+      amount: amount
+    }]);
+  },
+
+  transactions: function(trans) {
+    this.fire('transaction', trans);
+  }
+};
+</script>
