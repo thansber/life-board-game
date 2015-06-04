@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/setting-behavior.html">
 
 <dom-module id="life-setting-children">
   <template>
@@ -9,12 +10,8 @@
 <script>
 Polymer({
   is: 'life-setting-children',
-  properties: {
-    player: {
-      type: Object,
-      value: function() { return {}; }
-    }
-  },
+  behaviors: [SettingBehavior],
+
   childBorn: function(childType) {
     if (!this.player) {
       return;
