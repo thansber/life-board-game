@@ -6,6 +6,7 @@
 <link rel="import" href="life-setting-children.html">
 <link rel="import" href="life-setting-revenge.html">
 <link rel="import" href="life-setting-stock-market.html">
+<link rel="import" href="life-setting-lucky-number.html">
 
 <dom-module id="life-settings">
   <link rel="stylesheet" href="life-settings.css">
@@ -26,12 +27,9 @@
       <life-setting-adjuster setting-detail="adjuster" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-adjuster>
       <life-setting-children setting-detail="children" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
       <life-setting-revenge setting-detail="revenge" player="{{player}}" revengeables="{{revengeables}}" class$="{{settingDetailClasses}}"></life-setting-revenge>
-      <life-setting-stock-market setting-detail="stock-market" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
+      <life-setting-stock-market setting-detail="stock-market" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-stock-market>
+      <life-setting-lucky-number setting-detail="lucky-number" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-lucky-number>
     <!--
-      <div detail id="lucky-number-detail" setting="lucky-number" class="horizontal layout center center-justified">
-        <button red on-tap="luckyNumber" amount="24000">I spun the lucky number</button>
-      </div>
-
       <div detail id="toll-bridge-detail" setting="toll-bridge" class="horizontal layout center center-justified">
         <div id="tollBridgeOwner" hidden$="{{!player.ownsTollBridge}}">
           <button grey on-tap="tollBridgeLost">I no longer own the toll bridge</button>

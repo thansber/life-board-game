@@ -150,15 +150,6 @@ Polymer({
     }) || [])[0];
   },
 
-  luckyNumberSpun: function(event, detail, sender) {
-    var owner = this.luckyNumberOwner();
-    if (!detail.player || !owner) {
-      return;
-    }
-    owner.cash += detail.amount;
-    detail.player.cash -= detail.amount;
-  },
-
   movePlayer: function(event, detail) {
     var i = detail.index,
         playerMoving = this.splice('players', i, 1);
@@ -184,6 +175,19 @@ Polymer({
   onChildBirth: function(event) {
     event.detail.player[event.detail.childType]++;
     this.everyonePays(1000);
+  },
+
+  onLuckyNumberSpun: function(event) {
+    var owner = this.luckyNumberOwner();
+    if (!owner) {
+      return;
+    }
+    this.onTransaction({
+      detail: [
+        { player: event.detail.player, amount: -1 * event.detail.amount },
+        { player: owner, amount: event.detail.amount }
+      ]
+    })
   },
 
   onTransaction: function(event) {

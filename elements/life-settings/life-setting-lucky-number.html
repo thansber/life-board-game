@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/transaction-behavior.html">
+
+<dom-module id="life-setting-lucky-number">
+  <template>
+    <button red on-tap="spunLuckyNumber" amount="24000">I spun the lucky number</button>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'life-setting-lucky-number',
+  behaviors: [TransactionBehavior],
+  properties: {
+    player: {
+      type: Object,
+      value: function() { return {}; }
+    }
+  },
+
+  spunLuckyNumber: function(event) {
+    this.fire('lucky-number-spun', {
+      player: this.player,
+      amount: +event.target.getAttribute('amount')
+    });
+  }
+})
+</script>
