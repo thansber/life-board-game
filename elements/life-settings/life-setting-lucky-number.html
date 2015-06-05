@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../behaviors/setting-behavior.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
 <link rel="import" href="../behaviors/transaction-behavior.html">
 
 <dom-module id="life-setting-lucky-number">
@@ -10,7 +10,7 @@
 <script>
 Polymer({
   is: 'life-setting-lucky-number',
-  behaviors: [SettingBehavior, TransactionBehavior],
+  behaviors: [HasPlayerBehavior, TransactionBehavior],
 
   spunLuckyNumber: function(event) {
     this.fire('lucky-number-spun', {

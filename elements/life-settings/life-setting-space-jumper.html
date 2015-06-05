@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../behaviors/setting-behavior.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
 <link rel="import" href="../behaviors/spaces-behavior.html">
 
 <dom-module id="life-setting-space-jumper">
@@ -13,7 +13,7 @@
 <script>
 Polymer({
   is: 'life-setting-space-jumper',
-  behaviors: [SettingBehavior, SpacesBehavior],
+  behaviors: [HasPlayerBehavior, SpacesBehavior],
 
   hasLabel: function(label) {
     return !!label;

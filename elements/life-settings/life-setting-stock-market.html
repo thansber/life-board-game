@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../behaviors/setting-behavior.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
 <link rel="import" href="../behaviors/transaction-behavior.html">
 
 <dom-module id="life-setting-stock-market">
@@ -18,7 +18,7 @@
 <script>
 Polymer({
   is: 'life-setting-stock-market',
-  behaviors: [SettingBehavior, TransactionBehavior],
+  behaviors: [HasPlayerBehavior, TransactionBehavior],
 
   playStockMarket: function(event) {
     this.transaction(this.player, +event.target.getAttribute('amount'));
