@@ -15,7 +15,7 @@ Polymer({
     },
     settingDetailClasses: {
       type: String,
-      value: 'horizontal layout center center-justified'
+      value: 'horizontal layout center center-justified wrap'
     },
     spaces: {
       type: Array,

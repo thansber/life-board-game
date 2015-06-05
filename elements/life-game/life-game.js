@@ -7,7 +7,8 @@ Polymer({
   },
 
   observers: [
-    'insuranceChanged(currentPlayer.insurance)',
+    'insuranceChanged(currentPlayer.insurance.splices)',
+    'spaceChanged(currentPlayer.space)',
     'tollBridgeChanged(currentPlayer.crossedTollBridge)',
     'tollBridgeChanged(currentPlayer.ownsTollBridge)'
   ],
@@ -17,6 +18,7 @@ Polymer({
       type: Object,
       value: function() {
         return {
+          hasInsurance: [],
           insurance: []
         };
       },
@@ -37,8 +39,6 @@ Polymer({
       value: function() { return []; },
       notify: true
     },
-    // TODO: remove this
-    spaces: { type: Array, value: function() { return []; } },
     started: {
       type: Boolean,
       value: false,
@@ -123,9 +123,9 @@ Polymer({
     return !started || gameOver;
   },
 
-  insuranceChanged: function(changes) {
+  insuranceChanged: function() {
     this.currentPlayer.insurance.forEach(function(insuranceType) {
-      this.currentPlayer.hasInsurance[insuranceType] = true;
+      this.set('currentPlayer.hasInsurance.' + insuranceType, true);
     }, this);
   },
 
@@ -246,6 +246,13 @@ Polymer({
     this.allPlayers()[index].setAttribute('active', '');
     this.currentPlayer = this.players[index];
     this.calculateRevengeables();
+  },
+
+  spaceChanged: function() {
+    if (!this.started) {
+      return;
+    }
+    this.$.spaces.style.top = this.currentlySelectedPlayer().offsetTop + 'px';
   },
 
   startedChanged: function() {

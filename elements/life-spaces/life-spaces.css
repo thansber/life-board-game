@@ -1,11 +1,13 @@
 :host {
-  display: none;
+  /*display: none;*/
   left: 45%;
+  margin-top: 23px;
   position: absolute;
+  top: 0;
 }
 
 :host [space] {
-  display: none;
+  /*display: none;*/
 }
 
 :host [space][active] {

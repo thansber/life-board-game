@@ -39,11 +39,11 @@ section[setting="all"] {
   padding-right: 1em;
 }
 
-#all-detail {
+[setting-detail="all"] {
   height: 6em;
 }
 
-#all-detail button {
+[setting-detail="all"] button {
   margin-bottom: 0.5em;
 }
 

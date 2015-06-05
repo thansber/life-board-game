@@ -48,7 +48,7 @@ html /deep/ paper-ripple {
 
 html /deep/ [text] {
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 html /deep/ [red],

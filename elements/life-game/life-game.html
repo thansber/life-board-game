@@ -2,9 +2,7 @@
 <link rel="import" href="../../bower_components/layout/layout.html">
 <link rel="import" href="../../bower_components/iron-a11y-keys/iron-a11y-keys.html">
 <link rel="import" href="../../elements/life-player/life-player.html">
-<!--
 <link rel="import" href="../../elements/life-spaces/life-spaces.html">
--->
 <link rel="import" href="../../elements/life-settings/life-settings.html">
 
 <dom-module id="life-game"
@@ -24,9 +22,12 @@
           on-select-player="selectPlayer"></life-player>
       </template>
     </div>
-<!--
-    <life-spaces player="{{currentPlayer}}" allSpaces="{{spaces}}"></life-spaces>
--->
+
+    <life-spaces id="spaces"
+      player="{{currentPlayer}}"
+      allSpaces="{{spaces}}"
+      on-transaction="onTransaction"></life-spaces>
+
     <life-settings id="settings"
       player="{{currentPlayer}}"
       revengeables="{{revengeables}}"

@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/transaction-behavior.html">
+
+<dom-module id="space-insurance">
+  <template>
+    <div id="hasInsurance" hidden$="{{!playerHasInsurance}}">
+      <span text>already owns <span>{{type}}</span> insurance</span>
+    </div>
+    <div id="noInsurance" hidden$="{{playerHasInsurance}}">
+      would you like to buy <span>{{type}}</span> insurance?
+      <button insurance-color$="{{color}}" executor on-tap="addInsurance">Yes, please</button>
+      <button grey next on-tap="next">No thanks</button>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'space-insurance',
+  behaviors: [TransactionBehavior],
+  properties: {
+    type: String,
+    amount: Number,
+    playerHasInsurance: Boolean,
+    player: {
+      type: Object,
+      value: function() { return {}; },
+      notify: true
+    }
+  },
+  observers: [
+    'insuranceChanged(player.hasInsurance.*)'
+  ],
+
+  addInsurance: function(e) {
+    this.push('player.insurance', this.type);
+    this.transaction(this.player, -1 * this.amount);
+  },
+
+  insuranceChanged: function() {
+    this.playerHasInsurance = !!this.player.hasInsurance[this.type];
+  }
+});
+</script>
+
+<!--
+<polymer-element name="insurance-space" attributes="player insurance amount color" extends="life-space">
+  <template>
+    <template if="{{hasInsurance}}">
+      <span text>already owns <span>{{insurance}}</span> insurance</span>
+    </template>
+    <template if="{{!hasInsurance}}">
+      would you like to buy <span>{{insurance}}</span> insurance?
+      <button insurance-color="{{color}}" executor on-tap="{{addInsurance}}" insurance="{{insurance}}" amount="{{amount}}">Yes, please</button>
+      <button grey next on-tap="{{next}}">No thanks</button>
+    </template>
+  </template>
+  <script src="insurance-space.js"></script>
+</polymer-element>
+-->

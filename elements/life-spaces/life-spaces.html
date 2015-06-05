@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-selector/core-selector.html">
-<link rel="import" href="../../elements/life-space/insurance-space.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../elements/life-space/space-insurance.html">
+<!--
 <link rel="import" href="../../elements/life-space/tuition-space.html">
 <link rel="import" href="../../elements/life-space/jobs-space.html">
 <link rel="import" href="../../elements/life-space/marriage-space.html">
@@ -13,11 +14,15 @@
 <link rel="import" href="../../elements/life-space/ending-space.html">
 <link rel="import" href="../../elements/life-space/millionaire-space.html">
 <link rel="import" href="../../elements/life-space/failed-space.html">
-
-<polymer-element name="life-spaces" attributes="player allSpaces" on-next-space="{{nextSpace}}">
+-->
+<dom-module id="life-spaces">
+  <style>
+  </style>
+  <link rel="import" type="css" href="life-spaces.css">
   <template>
-    <link rel="stylesheet" href="life-spaces.css">
-    <core-selector id="spaces" valueattr="id"><!-- populated by JS --></core-selector>
+    <iron-selector id="spaces" attr-for-selected="space">
+      <space-insurance space="auto-insurance" player="{{player}}" type="auto" amount="1000" color="orange"></space-insurance>
+    </iron-selector>
   </template>
-  <script src="life-spaces.js"></script>
-</polymer-element
+</dom-module>
+<script src="life-spaces.js"></script>
