@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/space-behavior.html">
+<link rel="import" href="../behaviors/transaction-behavior.html">
+
+<dom-module id="space-tuition">
+  <template>
+    please pay for tuition
+    <button red executor on-tap="payTuition" amount="-2000">OK</button>
+    <button grey next on-tap="next">No thanks</button>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'space-tuition',
+  behaviors: [SpaceBehavior, TransactionBehavior],
+  properties: {
+    player: {
+      type: Object,
+      value: function() { return {}; },
+    }
+  },
+
+  payTuition: function(event) {
+    this.transaction(this.player, +event.target.getAttribute('amount'));
+  }
+});
+</script>
+

@@ -1,0 +1,69 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
+<link rel="import" href="../behaviors/space-behavior.html">
+
+<dom-module id="space-jobs">
+  <style>
+    :host {
+      width: 100%;
+    }
+    #hasJob, #unemployed {
+      display: inline-block;
+    }
+    #jobs {
+      background-color: rgb(238, 238, 238);
+      border: none;
+      font-size: 1em;
+      height: 32px;
+      margin-left: 1em;
+    }
+  </style>
+  <template>
+    <div id="hasJob" hidden$="{{!hasJob}}">
+      you are already a <span>{{player.job.desc}}</span>
+    </div>
+    <div id="unemployed" hidden$="{{hasJob}}">
+      <select id="jobs" on-change="setJob">
+        <option value="">--What profession are you?--</option>
+        <template is="dom-repeat" items="{{jobs}}">
+          <option value="{{item.id}}">{{item.desc}}</option>
+        </template>
+      </select>
+    </div>
+    <button grey next on-tap="next">Next</button>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'space-jobs',
+  behaviors: [HasPlayerBehavior, SpaceBehavior],
+  observers: [
+    'jobChanged(player.job)'
+  ],
+
+  jobChanged: function() {
+    this.hasJob = !!this.player.job;
+  },
+
+  ready: function() {
+    this.jobs = [
+      { id: 'doctor', desc: 'Doctor', salary: 50000, summary:'is a Doctor'},
+      { id: 'journalist', desc: 'Journalist', salary: 24000, summary: 'is a Journalist'},
+      { id: 'lawyer', desc: 'Lawyer', salary: 50000, summary: 'is a Lawyer'},
+      { id: 'teacher', desc: 'Teacher', salary: 20000, summary: 'is a Teacher'},
+      { id: 'physicist', desc: 'Physicist', salary: 30000, summary: 'is a Physicist'},
+      { id: 'university', desc: 'University Student', salary: 16000, summary: 'is a University Student'},
+      { id: 'business', desc: 'Business Degree', salary: 12000, summary: 'has a Business Degree'}
+    ];
+    this.jobsById = {};
+    this.jobs.reduce(function(o, job) {
+      o[job.id] = job;
+      return o;
+    }, this.jobsById);
+  },
+
+  setJob: function(event) {
+    this.set('player.job', this.jobsById[event.target.options[event.target.selectedIndex].getAttribute('value')]);
+  }
+});
+</script>
