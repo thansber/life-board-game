@@ -4,12 +4,13 @@
   margin-top: 23px;
   position: absolute;
   top: 0;
+  width: 55%;
 }
 
 :host [space] {
-  /*display: none;*/
+  display: none;
 }
 
-:host [space][active] {
+:host [space].iron-selected {
   display: inline-block;
 }
