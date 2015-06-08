@@ -6,7 +6,8 @@ Polymer({
       value: function() { return {}; },
       notify: true
     },
-    started: Boolean
+    started: Boolean,
+    taxAmount: Number
   },
   observers: [
     'playerChanged(player)'
@@ -22,6 +23,10 @@ Polymer({
     }
     if (!this.player.space) {
       this.set('player.space', Polymer.dom(this.$.spaces).querySelectorAll('[space]')[0].getAttribute('space'));
+    }
+
+    if (this.player.job) {
+      this.taxAmount = this.player.job.salary / 2;
     }
   }
 
