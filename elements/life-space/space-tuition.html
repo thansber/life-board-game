@@ -17,6 +17,7 @@ Polymer({
 
   payTuition: function(event) {
     this.transaction(this.player, +event.target.getAttribute('amount'));
+    this.next();
   }
 });
 </script>
