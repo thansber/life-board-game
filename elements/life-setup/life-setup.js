@@ -116,7 +116,7 @@ Polymer({
     this.players[0].insurance.push('auto', 'life', 'stock');
     this.players[2].luckyNumber = 7;
     this.players[3].ownsTollBridge = true;
-    this.players[1].space = 'marriage';
+    this.players[1].space = 'taxes2';
 
   },
 
