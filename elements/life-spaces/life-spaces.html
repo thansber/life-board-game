@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../elements/life-space/space-payment.html">
 <link rel="import" href="../../elements/life-space/space-insurance.html">
 <link rel="import" href="../../elements/life-space/space-tuition.html">
 <link rel="import" href="../../elements/life-space/space-jobs.html">
@@ -24,6 +25,7 @@
       <space-jobs space="jobs" player="{{player}}"></space-jobs>
       <space-insurance space="life-insurance" player="{{player}}" type="life" amount="10000" color="blue"></space-insurance>
       <space-marriage space="marriage" player="{{player}}"></space-marriage>
+      <space-payment space="house" player="{{player}}" amount="40000">bought a house</space-payment>
       <space-insurance space="fire-insurance" player="{{player}}" type="fire" amount="10000" color="red"></space-insurance>
       <space-insurance space="stock-insurance" player="{{player}}" type="stock" amount="50000" color="green"></space-insurance>
     </iron-selector>
