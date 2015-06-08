@@ -31,17 +31,6 @@ Polymer({
     }
   },
 
-  getRevenge: function(event, detail) {
-    var revengeOnIndex = +this.$['revenge-detail'].querySelector('#revenge-whom').selectedIndex,
-        amount = +sender.getAttribute('amount');
-    this.player.cash += amount;
-    this.revengePlayers[revengeOnIndex].cash -= amount;
-  },
-
-  luckyNumber: function(event, detail) {
-    this.fire('lucky-number', { player: this.player, amount: +sender.getAttribute('amount') });
-  },
-
   payday: function(event, detail) {
     this.fire('pay-day');
   },
@@ -67,10 +56,6 @@ Polymer({
       return;
     }
     this.$[detailId + '-detail'].classList.add('selected');*/
-  },
-
-  tollBridgeLost: function(event, detail, sender) {
-    this.player.ownsTollBridge = false;
   },
 
   transaction: function(event, detail, sender) {
