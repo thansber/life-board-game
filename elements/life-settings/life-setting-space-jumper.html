@@ -6,7 +6,7 @@
 <dom-module id="life-setting-space-jumper">
   <template>
     <template is="dom-repeat" items="{{spaces}}">
-      <button grey on-tap="setSpace" space="{{item.id}}" hidden$="{{!hasLabel(item.label)}}">{{item.label}}</button>
+      <button grey on-tap="setSpace" space$="{{item.id}}" hidden$="{{!hasLabel(item.label)}}">{{item.label}}</button>
     </template>
   </template>
 </dom-module>
@@ -17,7 +17,10 @@ Polymer({
 
   hasLabel: function(label) {
     return !!label;
-  }
+  },
 
+  setSpace: function(event) {
+    this.set('player.space', event.target.getAttribute('space'));
+  }
 });
 </script>
