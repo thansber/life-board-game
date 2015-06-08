@@ -6,6 +6,7 @@
   <template>
     <div id="hasInsurance" hidden$="{{!playerHasInsurance}}">
       <span text>already owns <span>{{type}}</span> insurance</span>
+      <button grey next on-tap="next">Next</button>
     </div>
     <div id="noInsurance" hidden$="{{playerHasInsurance}}">
       would you like to buy <span>{{type}}</span> insurance?
