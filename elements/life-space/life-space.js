@@ -33,11 +33,6 @@ Polymer({
     this.fire('failed', { player: this.player });
   },
 
-  getMarried: function(event, detail, sender) {
-    this.player.married = true;
-    this.everyonePays.apply(this, arguments);
-  },
-
   next: function(event, detail, sender) {
     this.fire('next-space');
   },

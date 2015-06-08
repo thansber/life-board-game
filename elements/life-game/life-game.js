@@ -190,6 +190,11 @@ Polymer({
     })
   },
 
+  onMarriage: function(event) {
+    this.set('currentPlayer.married', true);
+    this.everyonePays(event.detail.amount);
+  },
+
   onPayday: function(event) {
     if (!this.currentPlayer.job) {
       return;

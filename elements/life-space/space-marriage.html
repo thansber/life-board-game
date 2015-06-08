@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
+<link rel="import" href="../behaviors/space-behavior.html">
+
+<dom-module id="space-marriage">
+  <template>
+    <div id="stillSingle" hidden$="{{player.married}}">
+      is getting married, and spun a
+      <button green on-tap="getMarried" amount="2000">1, 2, or 3</button>
+      <button green on-tap="getMarried" amount="1000">4, 5, or 6</button>
+      <button grey on-tap="getMarried" amount="0">7, 8, 9, or 10</button>
+    </div>
+    <div id="married" hidden$="{{!player.married}}">
+      is already married
+      <button grey next on-tap="next">Next</button>
+    </div>
+  </template>
+</dom-module>
+<script>
+Polymer({
+  is: 'space-marriage',
+  behaviors: [HasPlayerBehavior, SpaceBehavior],
+
+  getMarried: function(event) {
+    this.fire('marriage', {
+      player: this.player,
+      amount: +event.target.getAttribute('amount')
+    });
+    this.next();
+  }
+});
+</script>
