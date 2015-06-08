@@ -7,7 +7,6 @@
 
 <dom-module id="life-game"
   on-everyone-pays="everyonePays"
-  on-pay-day="payday"
   on-toll-bridge-crossed="tollBridgeCrossed"
   on-millionaire="becomeMillionaire"
   on-tycoon="becomeTycoon"
@@ -35,8 +34,10 @@
       spaces="{{spaces}}"
       hidden$="{{hideSettings(started, gameOver)}}"
       on-transaction="onTransaction"
+      on-pay-day="onPayday"
       on-child-birth="onChildBirth"
-      on-lucky-number-spun="onLuckyNumberSpun"></life-settings>
+      on-lucky-number-spun="onLuckyNumberSpun"
+      on-space-jump="onSpaceJump"></life-settings>
     <iron-a11y-keys keys="n esc" target="{{}}" on-keys-pressed="keyHandler"></iron-a11y-keys>
   </template>
 </dom-module>

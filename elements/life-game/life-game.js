@@ -190,6 +190,18 @@ Polymer({
     })
   },
 
+  onPayday: function(event) {
+    if (!this.currentPlayer.job) {
+      return;
+    }
+    this.onTransaction({
+      detail: [{
+        player: this.currentPlayer,
+        amount: this.currentPlayer.job.salary
+      }]
+    });
+  },
+
   onTransaction: function(event) {
     event.detail.forEach(function(transaction) {
       this.playerSet(transaction.player, 'cash', transaction.player.cash + transaction.amount);
@@ -201,18 +213,6 @@ Polymer({
     return (this.players || []).filter(function(player) {
       return player.index !== notThisPlayer.index;
     });
-  },
-
-  payday: function() {
-    if (!this.currentPlayer) {
-      return;
-    }
-
-    if (!this.currentPlayer.job) {
-      return;
-    }
-
-    this.currentPlayer.cash += this.currentPlayer.job.salary;
   },
 
   playerIndex: function(playerElem) {
