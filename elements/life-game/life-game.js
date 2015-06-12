@@ -207,6 +207,27 @@ Polymer({
     });
   },
 
+  onTollBridgeCrossed: function(event) {
+    var owner = this.tollBridgeOwner();
+    if (owner) {
+      this.onTransaction({
+        detail: [
+          {
+            player: event.detail.player,
+            amount: -1 * event.detail.amount
+          },
+          {
+            player: owner,
+            amount: event.detail.amount
+          }
+        ]
+      });
+    } else {
+      this.set('currentPlayer.ownsTollBridge', true);
+    }
+    this.set('currentPlayer.crossedTollBridge', true);
+  },
+
   onTransaction: function(event) {
     event.detail.forEach(function(transaction) {
       this.playerSet(transaction.player, 'cash', transaction.player.cash + transaction.amount);
@@ -272,7 +293,7 @@ Polymer({
     if (this.currentPlayer.crossedTollBridge) {
       text = this.currentPlayer.ownsTollBridge ? 'I own the toll bridge' : 'I crossed the toll bridge';
     }
-    this.currentPlayer.tollBridgeText = text;
+    this.set('currentPlayer.tollBridgeText', text);
   },
 
   tollBridgeCrossed: function(event, detail, sender) {
