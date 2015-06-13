@@ -51,32 +51,43 @@ Polymer({
     return Polymer.dom(this.$.playerList).querySelectorAll('life-player');
   },
 
-  becomeMillionaire: function(event, detail, sender) {
+  becomeMillionaire: function(event) {
     var
-      otherPlayers = this.otherPlayers(detail.player),
+      otherPlayers = this.otherPlayers(this.currentPlayer),
       anyOtherMillionaires = otherPlayers.some(function(player) {
         return !!player.millionaire;
-      });
+      }),
+      transactions = [];
 
-    detail.player.millionaire = true;
-    detail.player.space = 'millionaire';
+    this.set('currentPlayer.millionaire', true);
+    this.set('currentPlayer.space', 'millionaire');
     if (!anyOtherMillionaires) {
-      detail.player.cash += 240000;
+      transactions.push({
+        player: this.currentPlayer,
+        amount: 240000
+      });
       otherPlayers.forEach(function(player) {
-        player.canHaveLuckyNumber = false;
+        this.set('player.canHaveLuckyNumber', false);
+      }, this);
+    }
+    if (this.currentPlayer.hasInsurance.life) {
+      transactions.push({
+        player: this.currentPlayer,
+        amount: 8000
       });
     }
-    if (detail.player.hasInsurance.life) {
-      detail.player.cash += 8000;
+    if (this.currentPlayer.hasInsurance.stock) {
+      transactions.push({
+        player: this.currentPlayer,
+        amount: 120000
+      });
     }
-    if (detail.player.hasInsurance.stock) {
-      detail.player.cash += 120000;
-    }
+    this.onTransaction({ detail: transactions });
   },
 
-  becomeTycoon: function(event, detail, sender) {
-    detail.player.tycoon = true;
-    this.gameOver = true;
+  becomeTycoon: function(event) {
+    this.set('currentPlayer.tycoon', true);
+    this.set('gameOver', true);
   },
 
   calculateRevengeables: function() {
@@ -113,10 +124,15 @@ Polymer({
     this.onTransaction({ detail: transactions });
   },
 
-  failedAtLife: function(event, detail, sender) {
-    detail.player.lostEverything = true;
-    detail.player.space = 'failed';
-    detail.player.cash = 0;
+  failedAtLife: function(event) {
+    this.set('currentPlayer.lostEverything', true);
+    this.set('currentPlayer.space', 'failed');
+    this.onTransaction({
+      detail: [{
+        player: this.currentPlayer,
+        amount: -1 * this.currentPlayer.cash
+      }]
+    });
   },
 
   hideSettings: function(started, gameOver) {
@@ -294,17 +310,6 @@ Polymer({
       text = this.currentPlayer.ownsTollBridge ? 'I own the toll bridge' : 'I crossed the toll bridge';
     }
     this.set('currentPlayer.tollBridgeText', text);
-  },
-
-  tollBridgeCrossed: function(event, detail, sender) {
-    var owner = this.tollBridgeOwner();
-    if (owner) {
-      detail.player.cash -= detail.amount;
-      owner.cash += detail.amount;
-    } else {
-      detail.player.ownsTollBridge = true;
-    }
-    detail.player.crossedTollBridge = true;
   },
 
   tollBridgeOwner: function() {

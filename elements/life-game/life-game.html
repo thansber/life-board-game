@@ -6,11 +6,7 @@
 <link rel="import" href="../../elements/life-settings/life-settings.html">
 
 <dom-module id="life-game"
-  on-everyone-pays="everyonePays"
-  on-toll-bridge-crossed="tollBridgeCrossed"
-  on-millionaire="becomeMillionaire"
-  on-tycoon="becomeTycoon"
-  on-failed="failedAtLife">
+  on-everyone-pays="everyonePays">
   <link rel="import" type="css" href="life-game.css">
   <template>
     <div class="vertical layout" id="playerList">
@@ -28,7 +24,10 @@
       allSpaces="{{spaces}}"
       on-transaction="onTransaction"
       on-marriage="onMarriage"
-      on-toll-bridge-crossed="onTollBridgeCrossed"></life-spaces>
+      on-toll-bridge-crossed="onTollBridgeCrossed"
+      on-millionaire="becomeMillionaire"
+      on-tycoon="becomeTycoon"
+      on-failed="failedAtLife"></life-spaces>
 
     <life-settings id="settings"
       player="{{currentPlayer}}"

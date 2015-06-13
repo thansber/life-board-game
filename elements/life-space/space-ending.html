@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/has-player-behavior.html">
+<link rel="import" href="../behaviors/space-behavior.html">
+
+<dom-module id="space-ending">
+  <template>
+    <span text hidden$="{{!isMillionaire}}">is a millionaire</span>
+    <span text hidden$="{{!isTycoon}}">is a tycoon and wins the game!</span>
+    <div hidden="{{isAlreadyAtEnd}}">
+      <button green on-tap="becomeMillionaire">Become a millionaire</button>
+      <button gold on-tap="becomeTycoon">Become a tycoon</button>
+      <button grey on-tap="failedAtLife">My life failed</button>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+  is: 'space-ending',
+  behaviors: [HasPlayerBehavior, SpaceBehavior],
+  properties: {
+    isAlreadyAtEnd: {
+      type: Boolean,
+      value: false
+    },
+    isMillionaire: {
+      type: Boolean,
+      value: false
+    },
+    isTycoon: {
+      type: Boolean,
+      value: false
+    }
+  },
+  observers: [
+    '_playerChanged(player)',
+    '_playerChanged(player.*)'
+  ],
+
+  becomeMillionaire: function() {
+    this.fire('millionaire');
+  },
+
+  becomeTycoon: function() {
+    this.fire('tycoon');
+  },
+
+  failedAtLife: function() {
+    this.fire('failed');
+  },
+
+  _playerChanged: function() {
+    this.isMillionaire = !!(this.player.millionaire && !this.player.tycoon);
+    this.isTycoon = !!this.player.tycoon;
+    this.isAlreadyAtEnd = !!(this.isMillionaire || this.isTycoon || this.lostEverything);
+  }
+});
+</script>
