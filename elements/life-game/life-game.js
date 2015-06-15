@@ -126,7 +126,7 @@ Polymer({
 
   failedAtLife: function(event) {
     this.set('currentPlayer.lostEverything', true);
-    this.set('currentPlayer.space', 'failed');
+    this.set('currentPlayer.space', 'failure');
     this.onTransaction({
       detail: [{
         player: this.currentPlayer,

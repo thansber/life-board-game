@@ -52,7 +52,7 @@ Polymer({
   _playerChanged: function() {
     this.isMillionaire = !!(this.player.millionaire && !this.player.tycoon);
     this.isTycoon = !!this.player.tycoon;
-    this.isAlreadyAtEnd = !!(this.isMillionaire || this.isTycoon || this.lostEverything);
+    this.isAlreadyAtEnd = !!(this.isMillionaire || this.isTycoon);
   }
 });
 </script>
