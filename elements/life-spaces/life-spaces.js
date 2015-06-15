@@ -10,7 +10,8 @@ Polymer({
     taxAmount: Number
   },
   observers: [
-    'playerChanged(player)'
+    'playerChanged(player)',
+    'playerChanged(player.job)'
   ],
 
   nextSpace: function() {

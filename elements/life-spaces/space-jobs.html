@@ -20,7 +20,7 @@
   </style>
   <template>
     <div id="hasJob" hidden$="{{!hasJob}}">
-      you are already a <span>{{player.job.desc}}</span>
+      you are a <span>{{player.job.desc}}</span>
     </div>
     <div id="unemployed" hidden$="{{hasJob}}">
       <select id="jobs" on-change="setJob">
