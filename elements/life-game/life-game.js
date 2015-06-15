@@ -157,6 +157,10 @@ Polymer({
       case 'N':
         this.nextPlayer();
         break;
+      case 'p':
+      case 'P':
+        this.onPayday();
+        break;
     };
   },
 
@@ -179,7 +183,7 @@ Polymer({
     if (!current) {
       nextIndex = 0;
     } else {
-      nextIndex = this.playerIndex(current) + 1;
+      nextIndex = current.playerIndex + 1;
       if (nextIndex >= this.players.length) {
         nextIndex = 0;
       }
@@ -277,7 +281,7 @@ Polymer({
     this.set('players.length', this.players.length);
   },
 
-  selectPlayer: function(event, detail, sender) {
+  selectPlayer: function(event, detail) {
     var index = detail.index;
 
     if (this.gameOver) {
