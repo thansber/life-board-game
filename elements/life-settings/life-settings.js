@@ -28,6 +28,8 @@ Polymer({
     if (previousSetting) {
       previousSetting.classList.toggle('selected-setting');
       Polymer.dom(this.root).querySelector('[setting-detail].selected-setting').classList.toggle('selected-setting');
+      this.$.settingSelector.selected = '';
+      this.$.settingDetail.selected = '';
     }
   },
 
@@ -47,10 +49,6 @@ Polymer({
   showSetting: function(event, detail) {
     this.selectedSetting = detail.item.getAttribute('setting');
     this.$.settingDetail.select(this.selectedSetting);
-  },
-
-  transaction: function(event, detail, sender) {
-    this.player.cash += +sender.getAttribute('amount');
   }
 
 });
