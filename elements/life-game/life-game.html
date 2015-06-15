@@ -5,8 +5,7 @@
 <link rel="import" href="../../elements/life-spaces/life-spaces.html">
 <link rel="import" href="../../elements/life-settings/life-settings.html">
 
-<dom-module id="life-game"
-  on-everyone-pays="everyonePays">
+<dom-module id="life-game">
   <link rel="import" type="css" href="life-game.css">
   <template>
     <div class="vertical layout" id="playerList">
@@ -21,7 +20,6 @@
     <life-spaces id="spaces"
       player="{{currentPlayer}}"
       started="{{started}}"
-      allSpaces="{{spaces}}"
       on-transaction="onTransaction"
       on-marriage="onMarriage"
       on-toll-bridge-crossed="onTollBridgeCrossed"
@@ -33,7 +31,7 @@
       player="{{currentPlayer}}"
       revengeables="{{revengeables}}"
       spaces="{{spaces}}"
-      hidden$="{{hideSettings}}"
+      hidden$="{{!gameRunning}}"
       on-transaction="onTransaction"
       on-pay-day="onPayday"
       on-child-birth="onChildBirth"

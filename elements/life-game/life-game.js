@@ -30,9 +30,9 @@ Polymer({
       value: false,
       notify: true
     },
-    hideSettings: {
+    gameRunning: {
       type: Boolean,
-      value: true,
+      value: false,
       readOnly: true
     },
     players: {
@@ -142,7 +142,7 @@ Polymer({
   },
 
   gameStateChanged: function() {
-    this._setHideSettings(!this.started || this.gameOver);
+    this._setGameRunning(this.started || !this.gameOver);
   },
 
   insuranceChanged: function() {
