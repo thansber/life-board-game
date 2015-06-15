@@ -142,7 +142,7 @@ Polymer({
   },
 
   gameStateChanged: function() {
-    this._setGameRunning(this.started || !this.gameOver);
+    this._setGameRunning(this.started && !this.gameOver);
   },
 
   insuranceChanged: function() {
