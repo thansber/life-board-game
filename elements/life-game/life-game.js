@@ -7,6 +7,7 @@ Polymer({
   },
 
   observers: [
+    'gameStateChanged(started, gameOver)',
     'insuranceChanged(currentPlayer.insurance.splices)',
     'spaceChanged(currentPlayer.space)',
     'tollBridgeChanged(currentPlayer.crossedTollBridge)',
@@ -28,6 +29,11 @@ Polymer({
       type: Boolean,
       value: false,
       notify: true
+    },
+    hideSettings: {
+      type: Boolean,
+      value: true,
+      readOnly: true
     },
     players: {
       type: Array,
@@ -135,8 +141,8 @@ Polymer({
     });
   },
 
-  hideSettings: function(started, gameOver) {
-    return !started || gameOver;
+  gameStateChanged: function() {
+    this._setHideSettings(!this.started || this.gameOver);
   },
 
   insuranceChanged: function() {
