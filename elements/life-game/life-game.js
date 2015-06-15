@@ -67,7 +67,7 @@ Polymer({
         amount: 240000
       });
       otherPlayers.forEach(function(player) {
-        this.set('player.canHaveLuckyNumber', false);
+        this.playerSet(player, 'canHaveLuckyNumber', false);
       }, this);
     }
     if (this.currentPlayer.hasInsurance.life) {

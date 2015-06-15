@@ -114,9 +114,8 @@ Polymer({
     this.players[0].cash = 543210;
     this.players[0].job = { salary: 50000, desc: 'Doctor' };
     this.players[0].insurance.push('auto', 'life', 'stock');
-    this.players[2].luckyNumber = 7;
-    this.players[3].ownsTollBridge = true;
-    this.players[1].space = 'taxes2';
+    //this.players[3].ownsTollBridge = true;
+    this.players[1].space = 'ending';
 
   },
 
