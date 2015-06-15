@@ -267,10 +267,6 @@ Polymer({
     });
   },
 
-  playerIndex: function(playerElem) {
-    return +playerElem.shadowRoot.querySelector('#player').getAttribute('player-index');
-  },
-
   playerSet: function(player, field, value) {
     this.set('players.' + player.index + '.' + field, value);
   },
