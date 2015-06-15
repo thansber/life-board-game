@@ -1,22 +1,42 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../behaviors/has-player-behavior.html">
-<link rel="import" href="../behaviors/spaces-behavior.html">
 
 <dom-module id="life-setting-space-jumper">
   <template>
     <template is="dom-repeat" items="{{spaces}}">
-      <button grey on-tap="setSpace" space$="{{item.id}}" hidden$="{{!hasLabel(item.label)}}">{{item.label}}</button>
+      <button grey on-tap="setSpace" space$="{{item.id}}">{{item.label}}</button>
     </template>
   </template>
 </dom-module>
 <script>
 Polymer({
   is: 'life-setting-space-jumper',
-  behaviors: [HasPlayerBehavior, SpacesBehavior],
+  behaviors: [HasPlayerBehavior],
 
   hasLabel: function(label) {
     return !!label;
+  },
+
+  ready: function() {
+    this.spaces = [
+      { id: 'auto-insurance', label: 'Auto Insurance' },
+      { id: 'tuition', label: 'Tuition' },
+      { id: 'jobs', label: 'Jobs' },
+      { id: 'life-insurance', label: 'Life Insurance' },
+      { id: 'marriage', label: 'Marriage' },
+      { id: 'house', label: 'House' },
+      { id: 'fire-insurance', label: 'Fire Insurance' },
+      { id: 'taxes1', tag: 'taxes-space', label: 'Taxes 1' },
+      { id: 'stock-insurance', label: 'Stock Insurance' },
+      { id: 'taxes2', tag: 'taxes-space', label: 'Taxes 2' },
+      { id: 'taxes3', tag: 'taxes-space', label: 'Taxes 3' },
+      { id: 'orphanage', label: 'Orphanage' },
+      { id: 'toll-bridge', label: 'Toll Bridge' },
+      { id: 'property-taxes', label: 'Property Taxes' },
+      { id: 'day-of-reckoning', label: 'Day of Reckoning' },
+      { id: 'ending', label: 'Ending' }
+    ];
   },
 
   setSpace: function(event) {

@@ -24,10 +24,10 @@ Polymer({
   },
 
   closeSettings: function() {
-    var previousSetting = Polymer.dom(this.root).querySelector('[detail].selected');
+    var previousSetting = Polymer.dom(this.root).querySelector('[setting].selected-setting');
     if (previousSetting) {
-      previousSetting.classList.toggle('selected');
-      this.$.settingSelector.selected = null;
+      previousSetting.classList.toggle('selected-setting');
+      Polymer.dom(this.root).querySelector('[setting-detail].selected-setting').classList.toggle('selected-setting');
     }
   },
 
@@ -47,15 +47,6 @@ Polymer({
   showSetting: function(event, detail) {
     this.selectedSetting = detail.item.getAttribute('setting');
     this.$.settingDetail.select(this.selectedSetting);
-    /*if (!this.$.settingSelector.selected) {
-      return;
-    }
-    this.closeSettings();
-
-    if (/payday/.test(detailId)) {
-      return;
-    }
-    this.$[detailId + '-detail'].classList.add('selected');*/
   },
 
   transaction: function(event, detail, sender) {
