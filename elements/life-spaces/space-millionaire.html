@@ -13,16 +13,9 @@
     <span text hidden$="{{!hasLuckyNumber}}">Your lucky number is <span>{{player.luckyNumber}}</span></span>
     <div id="selectLuckyNumber" hidden$="{{!pickingLuckyNumber}}">
       <span text>Lucky number</span>
-      <button grey lucky-number="1" on-tap="setLuckyNumber">1</button>
-      <button grey lucky-number="2" on-tap="setLuckyNumber">2</button>
-      <button grey lucky-number="3" on-tap="setLuckyNumber">3</button>
-      <button grey lucky-number="4" on-tap="setLuckyNumber">4</button>
-      <button grey lucky-number="5" on-tap="setLuckyNumber">5</button>
-      <button grey lucky-number="6" on-tap="setLuckyNumber">6</button>
-      <button grey lucky-number="7" on-tap="setLuckyNumber">7</button>
-      <button grey lucky-number="8" on-tap="setLuckyNumber">8</button>
-      <button grey lucky-number="9" on-tap="setLuckyNumber">9</button>
-      <button grey lucky-number="10" on-tap="setLuckyNumber">10</button>
+      <template is="dom-repeat" items="{{luckyNumbers}}">
+        <button grey lucky-number$="{{item.i}}" on-tap="setLuckyNumber">{{item.i}}</button>
+      </template>
     </div>
   </template>
 </dom-module>
@@ -38,7 +31,7 @@ Polymer({
     },
     luckyNumbers: {
       type: Array,
-      value: new Array(10)
+      value: [{i:1}, {i:2}, {i:3}, {i:4}, {i:5}, {i:6}, {i:7}, {i:8}, {i:9}, {i:10}]
     },
     pickingLuckyNumber: {
       type: Boolean,
