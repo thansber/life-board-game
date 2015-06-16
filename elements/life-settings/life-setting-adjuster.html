@@ -26,6 +26,10 @@ Polymer({
     }
     adjustValue.focus();
     this.transaction(this.player, amountChanged);
+  },
+
+  applyFocus: function() {
+    this.$['adjust-value'].focus();
   }
 })
 </script>

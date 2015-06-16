@@ -33,6 +33,12 @@ Polymer({
     }
   },
 
+  detailSelected: function(event) {
+    if (event.detail.item.getAttribute('setting-detail') === 'adjuster') {
+      event.detail.item.applyFocus();
+    }
+  },
+
   payday: function(event, detail) {
     this.fire('pay-day');
   },

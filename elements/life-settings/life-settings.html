@@ -25,7 +25,8 @@
       <section setting="all"><iron-icon icon="menu" alt="All Spaces"></iron-icon></section>
     </iron-selector>
 
-    <iron-selector id="settingDetail" attr-for-selected="setting-detail" selected-class="selected-setting">
+    <iron-selector id="settingDetail" attr-for-selected="setting-detail" selected-class="selected-setting"
+      on-iron-select="detailSelected">
       <life-setting-adjuster setting-detail="adjuster" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-adjuster>
       <life-setting-children setting-detail="children" player="{{player}}" class$="{{settingDetailClasses}}"></life-setting-children>
       <life-setting-revenge setting-detail="revenge" player="{{player}}" revengeables="{{revengeables}}" class$="{{settingDetailClasses}}"></life-setting-revenge>
