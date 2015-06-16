@@ -17404,7 +17404,7 @@ html /deep/ button[gold] {
     <div class="horizontal layout center" id="player" on-tap="playerAction">
       <div class="verical layout center" actions="" hidden$="{{started}}">
         <paper-icon-button icon="hardware:keyboard-arrow-up" player-action="move-player" direction="-1" hidden$="{{isFirst(playerIndex)}}" title="Move this player up"></paper-icon-button>
-        <paper-icon-button icon="remove-circle-outline" player-action="remove-player" first$="{{isFirst(playerIndex)}}" title="Remove this player"></paper-icon-button>
+        <paper-icon-button icon="icons:remove-circle-outline" player-action="remove-player" first$="{{isFirst(playerIndex)}}" title="Remove this player"></paper-icon-button>
         <paper-icon-button icon="hardware:keyboard-arrow-down" player-action="move-player" direction="1" hidden$="{{isLast(playerIndex, numPlayers)}}" title="Move this player down"></paper-icon-button>
       </div>
       <div id="cash" cash="" hidden="">{{formatCash(player.cash)}}</div>
