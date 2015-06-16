@@ -1,4 +1,0 @@
-- focus cash adjuster/highlight -> Polymer behavior
-
-- failed at life
-- clean up spaces behavior, not needed?
